@@ -1,0 +1,126 @@
+/*
+  biz2code design tokens — consolidated from Other/Design/biz2code Design system 2/tokens/*.
+  This file is generated from the brand package; edit the source there, not here.
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+
+:root {
+  /* ---- base palette — Cyan-500 and Navy-500 pixel-sampled from the logo ---- */
+  --cyan-50: #ECF9FD; --cyan-100: #D0EFFB; --cyan-200: #A1DFF7; --cyan-300: #68CCF2; --cyan-400: #39BCEE;
+  --cyan-500: #13A8E2; --cyan-600: #0F85B3; --cyan-700: #0B6284; --cyan-800: #08465E; --cyan-900: #052D3D;
+
+  --navy-50: #E5F3FA; --navy-100: #BFE2F2; --navy-200: #88C8E8; --navy-300: #4CADDC; --navy-400: #2384B3;
+  --navy-500: #154F6B; --navy-600: #144C66; --navy-700: #0E3648; --navy-800: #09232F; --navy-900: #05131A;
+
+  /* navy-tinted neutrals — never substitute a generic gray */
+  --n-50: #F9FAFA; --n-100: #F1F3F4; --n-200: #E3E6E8; --n-300: #C7CED1; --n-400: #94A1A8;
+  --n-500: #6A7981; --n-600: #4E5A5F; --n-700: #373F43; --n-800: #252A2D; --n-900: #151819;
+
+  --white: #FFFFFF;
+
+  --success-bg: #E4F5EC; --success-text: #0B6B45; --success-border: #B9E6CD;
+  --warning-bg: #FDF3E1; --warning-text: #8A5A0B; --warning-border: #F2DBAA;
+  --danger-bg: #FCEBEB; --danger-text: #A32D2D; --danger-border: #F0B8B8;
+  --info-bg: #ECF9FD; --info-text: #0B6284; --info-border: #A1DFF7;
+
+  /* the signature gloss — CTAs only */
+  --gradient-primary: linear-gradient(180deg, #68CCF2 0%, #0F85B3 55%, #0B6284 100%);
+  --gradient-secondary: linear-gradient(180deg, #2384B3 0%, #144C66 55%, #09232F 100%);
+
+  /* ---- semantic aliases — reach for these first ---- */
+  --surface-page: var(--n-50);
+  --surface-card: var(--white);
+  --surface-sunken: var(--n-100);
+  --surface-inverse: var(--navy-800);
+  --surface-accent-soft: var(--cyan-50);
+  --surface-inverse-soft: var(--navy-50);
+
+  --border-subtle: var(--n-200);
+  --border-default: var(--n-300);
+  --border-accent: var(--cyan-200);
+  --border-inverse: rgba(255, 255, 255, .14);
+
+  --text-primary: var(--navy-800);
+  --text-secondary: var(--n-600);
+  --text-muted: var(--n-500);
+  --text-inverse: var(--white);
+  --text-inverse-muted: rgba(255, 255, 255, .66);
+  --text-link: var(--cyan-700);
+  --text-link-hover: var(--cyan-800);
+  --text-on-accent: var(--white);
+
+  --accent: var(--cyan-500);            /* decorative fills only — fails contrast with white text */
+  --accent-interactive: var(--cyan-600); /* anything carrying white text */
+  --accent-pressed: var(--cyan-700);
+  --accent-quiet: var(--cyan-50);
+
+  --control-bg: var(--white);
+  --control-bg-hover: var(--n-50);
+  --control-bg-disabled: var(--n-100);
+  --control-border: var(--n-200);
+  --control-border-hover: var(--n-300);
+  --control-border-focus: var(--cyan-500);
+  --control-text-placeholder: var(--n-400);
+
+  /* ---- type ---- */
+  --font-display: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+  --font-ui: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+  --weight-regular: 400; --weight-medium: 500; --weight-semibold: 600; --weight-bold: 700; --weight-extrabold: 800;
+
+  --text-display-size: 40px; --text-display-weight: 800; --text-display-lh: 1.1; --text-display-ls: -0.02em;
+  --text-h1-size: 34px; --text-h1-weight: 800; --text-h1-lh: 1.15; --text-h1-ls: -0.015em;
+  --text-h2-size: 26px; --text-h2-weight: 700; --text-h2-lh: 1.2; --text-h2-ls: -0.01em;
+  --text-h3-size: 16px; --text-h3-weight: 700; --text-h3-lh: 1.35; --text-h3-ls: 0;
+
+  --text-body-size: 15px; --text-body-lh: 1.6;
+  --text-body-sm-size: 13.5px; --text-body-sm-lh: 1.6;
+  --text-label-size: 14px; --text-label-weight: 600; --text-label-lh: 1.4;
+  --text-caption-size: 12.5px; --text-caption-lh: 1.5;
+
+  --text-mono-size: 13px; --text-mono-weight: 500;
+  --text-eyebrow-size: 12px; --text-eyebrow-ls: 0.14em;
+
+  /* ---- spacing — 4px base ---- */
+  --space-0: 0px; --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-5: 20px;
+  --space-6: 24px; --space-7: 32px; --space-8: 40px; --space-9: 48px; --space-10: 56px; --space-12: 72px;
+
+  --card-padding: 22px;
+  --section-gap: 56px;
+  --control-padding-y: 13px; --control-padding-x: 28px;
+  --stack-gap: 14px;
+
+  --container-max: 1040px;
+  --border-hairline: 1px;
+  --border-strong: 1.5px;
+
+  /* ---- radius ---- */
+  --radius-pill: 999px;
+  --radius-card: 14px;
+  --radius-control: 10px;
+  --radius-sm: 5px;
+  --radius-icon-box: 14px;
+
+  /* ---- elevation — navy-tinted, never neutral black ---- */
+  --shadow-none: none;
+  --shadow-hairline: 0 1px 2px rgba(9, 35, 47, .04);
+  --shadow-raised: 0 2px 6px rgba(9, 35, 47, .06);
+  --shadow-overlay: 0 18px 48px -12px rgba(9, 35, 47, .28);
+  --shadow-cta-primary: 0 4px 14px -4px var(--cyan-600);
+  --shadow-cta-secondary: 0 4px 14px -4px var(--navy-700);
+  --focus-ring: 0 0 0 3px var(--cyan-200);
+
+  /* ---- motion — short, flat, no bounce ---- */
+  --ease-standard: cubic-bezier(.2, .6, .3, 1);
+  --ease-exit: cubic-bezier(.4, 0, 1, 1);
+  --duration-instant: 80ms;
+  --duration-fast: 140ms;
+  --duration-base: 200ms;
+  --duration-slow: 320ms;
+  --transition-control: background var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard),
+    transform var(--duration-instant) var(--ease-standard);
+}

@@ -1,0 +1,212 @@
+{
+  "$schema": "./_schema.json",
+  "verticalId": "health_fitness",
+  "displayName": "Health & Fitness",
+  "sector": "Health",
+  "typicalBusinessModels": [
+    "subscription",
+    "freemium"
+  ],
+  "lastReviewed": "2026-08-10",
+  "coverage": {
+    "metricsTotal": 12,
+    "metricsSourced": 3,
+    "metricsPlaceholder": 9,
+    "metricsProxy": 0,
+    "metricsWithConflicts": 0
+  },
+  "metrics": {
+    "arpu_12mo_blended_usd": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "USD",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "retention_d1_pct": {
+      "value": 23.5,
+      "rangeLow": 20.0,
+      "rangeHigh": 27.0,
+      "unit": "percent",
+      "confidence": "tertiary",
+      "source": {
+        "publisher": "Snoopr (citing Business of Apps)",
+        "via": "snoopr.co",
+        "url": "https://www.snoopr.co/blog/mobile-app-retention-benchmarks-2026-what-good-looks-like-for-fitness-ecommerce-gaming-and-more",
+        "tier": "tertiary",
+        "retrieved": "2026-08-10"
+      },
+      "note": null,
+      "conflicts": null
+    },
+    "retention_d7_pct": {
+      "value": 8.5,
+      "rangeLow": 7.0,
+      "rangeHigh": 10.0,
+      "unit": "percent",
+      "confidence": "tertiary",
+      "source": {
+        "publisher": "Snoopr (citing Business of Apps)",
+        "via": "snoopr.co",
+        "url": "https://www.snoopr.co/blog/mobile-app-retention-benchmarks-2026-what-good-looks-like-for-fitness-ecommerce-gaming-and-more",
+        "tier": "tertiary",
+        "retrieved": "2026-08-10"
+      },
+      "note": null,
+      "conflicts": null
+    },
+    "retention_d30_pct": {
+      "value": 3.5,
+      "rangeLow": 3.0,
+      "rangeHigh": 4.0,
+      "unit": "percent",
+      "confidence": "tertiary",
+      "source": {
+        "publisher": "Snoopr (citing Business of Apps)",
+        "via": "snoopr.co",
+        "url": "https://www.snoopr.co/blog/mobile-app-retention-benchmarks-2026-what-good-looks-like-for-fitness-ecommerce-gaming-and-more",
+        "tier": "tertiary",
+        "retrieved": "2026-08-10"
+      },
+      "note": "Among the lower-performing verticals - delayed-value problem.",
+      "conflicts": null
+    },
+    "retention_d365_pct": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "cpi_usd": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "USD",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "cpi_ios_usd": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "USD",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "cpi_android_usd": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "USD",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "trial_to_paid_pct": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "ltv_usd": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "USD",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "churn_monthly_pct": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "store_conversion_pct": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    }
+  }
+}

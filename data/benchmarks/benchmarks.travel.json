@@ -1,0 +1,212 @@
+{
+  "$schema": "./_schema.json",
+  "verticalId": "travel",
+  "displayName": "Travel & Booking",
+  "sector": "Travel & Local",
+  "typicalBusinessModels": [
+    "transactional",
+    "commission"
+  ],
+  "lastReviewed": "2026-08-10",
+  "coverage": {
+    "metricsTotal": 12,
+    "metricsSourced": 1,
+    "metricsPlaceholder": 11,
+    "metricsProxy": 0,
+    "metricsWithConflicts": 0
+  },
+  "metrics": {
+    "arpu_12mo_blended_usd": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "USD",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "retention_d1_pct": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "retention_d7_pct": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "retention_d30_pct": {
+      "value": 2.5,
+      "rangeLow": 2.0,
+      "rangeHigh": 3.0,
+      "unit": "percent",
+      "confidence": "secondary",
+      "source": {
+        "publisher": "Adjust - Mobile App Trends 2026",
+        "via": "core-mba.pro / uxcam summaries",
+        "url": "https://www.core-mba.pro/tool-hub/mobile-app-retention",
+        "tier": "secondary",
+        "retrieved": "2026-08-10"
+      },
+      "note": null,
+      "conflicts": null
+    },
+    "retention_d365_pct": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "cpi_usd": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "USD",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "cpi_ios_usd": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "USD",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "cpi_android_usd": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "USD",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "trial_to_paid_pct": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "ltv_usd": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "USD",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "churn_monthly_pct": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "store_conversion_pct": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    }
+  }
+}

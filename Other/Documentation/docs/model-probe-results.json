@@ -1,0 +1,17 @@
+{
+  "provider": "Groq",
+  "budgetMs": 30000,
+  "runs": 1,
+  "results": [
+    {
+      "model": "openai/gpt-oss-120b",
+      "ctx": null,
+      "verdict": "PASS",
+      "cleanRuns": "1/1",
+      "medianMs": 2423,
+      "worstMs": 2423,
+      "tokens": 856,
+      "why": null
+    }
+  ]
+}

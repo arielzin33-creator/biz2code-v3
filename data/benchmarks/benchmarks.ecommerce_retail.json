@@ -1,0 +1,212 @@
+{
+  "$schema": "./_schema.json",
+  "verticalId": "ecommerce_retail",
+  "displayName": "E-commerce & Retail",
+  "sector": "Commerce",
+  "typicalBusinessModels": [
+    "transactional",
+    "commission"
+  ],
+  "lastReviewed": "2026-08-10",
+  "coverage": {
+    "metricsTotal": 12,
+    "metricsSourced": 4,
+    "metricsPlaceholder": 8,
+    "metricsProxy": 0,
+    "metricsWithConflicts": 0
+  },
+  "metrics": {
+    "arpu_12mo_blended_usd": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "USD",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "retention_d1_pct": {
+      "value": 21.25,
+      "rangeLow": 18.0,
+      "rangeHigh": 24.5,
+      "unit": "percent",
+      "confidence": "tertiary",
+      "source": {
+        "publisher": "Sendbird / Plotline industry benchmarks",
+        "via": "lovable.dev guide",
+        "url": "https://lovable.dev/guides/what-is-a-good-retention-rate-for-an-app",
+        "tier": "tertiary",
+        "retrieved": "2026-08-10"
+      },
+      "note": "Marketplace apps reported markedly higher (~33.7%).",
+      "conflicts": null
+    },
+    "retention_d7_pct": {
+      "value": 10.7,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "tertiary",
+      "source": {
+        "publisher": "Sendbird / Plotline industry benchmarks",
+        "via": "lovable.dev guide",
+        "url": "https://lovable.dev/guides/what-is-a-good-retention-rate-for-an-app",
+        "tier": "tertiary",
+        "retrieved": "2026-08-10"
+      },
+      "note": null,
+      "conflicts": null
+    },
+    "retention_d30_pct": {
+      "value": 4.5,
+      "rangeLow": 3.0,
+      "rangeHigh": 6.0,
+      "unit": "percent",
+      "confidence": "secondary",
+      "source": {
+        "publisher": "UXCam (compiled from AppsFlyer State of App Marketing 2025 + 37k app panel)",
+        "via": "uxcam.com",
+        "url": "https://uxcam.com/blog/mobile-app-retention-benchmarks/",
+        "tier": "secondary",
+        "retrieved": "2026-08-10"
+      },
+      "note": null,
+      "conflicts": null
+    },
+    "retention_d365_pct": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "cpi_usd": {
+      "value": 1.68,
+      "rangeLow": 1.12,
+      "rangeHigh": 2.24,
+      "unit": "USD",
+      "confidence": "secondary",
+      "source": {
+        "publisher": "The Social Outline (citing Searchlab, Adjust, AppsFlyer, Liftoff 2026)",
+        "via": "thesocialoutline.com",
+        "url": "https://thesocialoutline.com/blog/mobile-app-cpi-benchmarks-2026",
+        "tier": "secondary",
+        "retrieved": "2026-08-10"
+      },
+      "note": "Mid-band; reported above global average.",
+      "conflicts": null
+    },
+    "cpi_ios_usd": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "USD",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "cpi_android_usd": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "USD",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "trial_to_paid_pct": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "ltv_usd": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "USD",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "churn_monthly_pct": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "store_conversion_pct": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    }
+  }
+}

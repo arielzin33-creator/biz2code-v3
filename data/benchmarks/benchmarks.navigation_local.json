@@ -1,0 +1,214 @@
+{
+  "$schema": "./_schema.json",
+  "verticalId": "navigation_local",
+  "displayName": "Navigation & Local Discovery",
+  "sector": "Travel & Local",
+  "typicalBusinessModels": [
+    "ad_supported",
+    "commission",
+    "b2b_licensing",
+    "freemium"
+  ],
+  "lastReviewed": "2026-08-10",
+  "coverage": {
+    "metricsTotal": 12,
+    "metricsSourced": 2,
+    "metricsPlaceholder": 10,
+    "metricsProxy": 2,
+    "metricsWithConflicts": 0
+  },
+  "metrics": {
+    "arpu_12mo_blended_usd": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "USD",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "retention_d1_pct": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "retention_d7_pct": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "retention_d30_pct": {
+      "value": 4.5,
+      "rangeLow": 3.0,
+      "rangeHigh": 6.0,
+      "unit": "percent",
+      "confidence": "secondary",
+      "source": {
+        "publisher": "UXCam (compiled from AppsFlyer State of App Marketing 2025 + 37k app panel)",
+        "via": "uxcam.com",
+        "url": "https://uxcam.com/blog/mobile-app-retention-benchmarks/",
+        "tier": "secondary",
+        "retrieved": "2026-08-10"
+      },
+      "note": "PROXY: no navigation-specific published benchmark found. Nearest analogue is the Travel & Local / utilities band. Treat as a proxy, not a measurement.",
+      "conflicts": null
+    },
+    "retention_d365_pct": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "cpi_usd": {
+      "value": 1.68,
+      "rangeLow": 1.12,
+      "rangeHigh": 2.24,
+      "unit": "USD",
+      "confidence": "secondary",
+      "source": {
+        "publisher": "The Social Outline (citing Searchlab, Adjust, AppsFlyer, Liftoff 2026)",
+        "via": "thesocialoutline.com",
+        "url": "https://thesocialoutline.com/blog/mobile-app-cpi-benchmarks-2026",
+        "tier": "secondary",
+        "retrieved": "2026-08-10"
+      },
+      "note": "PROXY: global blended CPI (Android $1.12 / iOS $2.24). No navigation-specific figure found.",
+      "conflicts": null
+    },
+    "cpi_ios_usd": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "USD",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "cpi_android_usd": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "USD",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "trial_to_paid_pct": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "ltv_usd": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "USD",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "churn_monthly_pct": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "store_conversion_pct": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    }
+  }
+}

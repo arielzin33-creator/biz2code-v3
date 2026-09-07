@@ -1,0 +1,18 @@
+{
+  /*
+    The Node-context half of the client workspace: the Playwright runner
+    config and the browser tests it drives. Kept out of tsconfig.json so its
+    Node globals cannot leak into browser code — see the note there.
+   */
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": [
+      "node"
+    ]
+  },
+  "include": [
+    "tests",
+    "playwright.config.ts",
+    "vite.config.ts"
+  ]
+}

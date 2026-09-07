@@ -1,0 +1,464 @@
+{
+  "$schema": "./_schema.json",
+  "verticalId": "_cross_vertical_default",
+  "displayName": "Cross-Vertical Aggregate (fallback)",
+  "sector": null,
+  "lastReviewed": "2026-08-24",
+  "usage": "Used ONLY when the selected vertical lacks a sourced value. Must be labelled as an aggregate, never as vertical-specific.",
+  "metrics": {
+    "retention_d1_pct": {
+      "value": 25.5,
+      "rangeLow": 25.0,
+      "rangeHigh": 26.0,
+      "unit": "percent",
+      "confidence": "secondary",
+      "source": {
+        "publisher": "Adjust - Mobile App Trends 2026",
+        "via": "core-mba.pro / uxcam summaries",
+        "url": "https://www.core-mba.pro/tool-hub/mobile-app-retention",
+        "tier": "secondary",
+        "retrieved": "2026-08-10"
+      },
+      "note": null,
+      "conflicts": null
+    },
+    "retention_d7_pct": {
+      "value": 12.0,
+      "rangeLow": 11.0,
+      "rangeHigh": 13.0,
+      "unit": "percent",
+      "confidence": "secondary",
+      "source": {
+        "publisher": "Adjust - Mobile App Trends 2026",
+        "via": "core-mba.pro / uxcam summaries",
+        "url": "https://www.core-mba.pro/tool-hub/mobile-app-retention",
+        "tier": "secondary",
+        "retrieved": "2026-08-10"
+      },
+      "note": null,
+      "conflicts": null
+    },
+    "retention_d30_pct": {
+      "value": 6.0,
+      "rangeLow": 5.0,
+      "rangeHigh": 7.0,
+      "unit": "percent",
+      "confidence": "secondary",
+      "source": {
+        "publisher": "Adjust - Mobile App Trends 2026",
+        "via": "core-mba.pro / uxcam summaries",
+        "url": "https://www.core-mba.pro/tool-hub/mobile-app-retention",
+        "tier": "secondary",
+        "retrieved": "2026-08-10"
+      },
+      "note": null,
+      "conflicts": null
+    },
+    "retention_d30_median_all_pct": {
+      "value": 4.0,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "secondary",
+      "source": {
+        "publisher": "UXCam (compiled from AppsFlyer State of App Marketing 2025 + 37k app panel)",
+        "via": "uxcam.com",
+        "url": "https://uxcam.com/blog/mobile-app-retention-benchmarks/",
+        "tier": "secondary",
+        "retrieved": "2026-08-10"
+      },
+      "note": "Median across all categories.",
+      "conflicts": null
+    },
+    "retention_d1_good_pct": {
+      "value": 27.5,
+      "rangeLow": 25.0,
+      "rangeHigh": 30.0,
+      "unit": "percent",
+      "confidence": "tertiary",
+      "source": {
+        "publisher": "Snoopr (citing Business of Apps)",
+        "via": "snoopr.co",
+        "url": "https://www.snoopr.co/blog/mobile-app-retention-benchmarks-2026-what-good-looks-like-for-fitness-ecommerce-gaming-and-more",
+        "tier": "tertiary",
+        "retrieved": "2026-08-10"
+      },
+      "note": null,
+      "conflicts": null
+    },
+    "retention_d7_good_pct": {
+      "value": 12.5,
+      "rangeLow": 10.0,
+      "rangeHigh": 15.0,
+      "unit": "percent",
+      "confidence": "tertiary",
+      "source": {
+        "publisher": "Snoopr (citing Business of Apps)",
+        "via": "snoopr.co",
+        "url": "https://www.snoopr.co/blog/mobile-app-retention-benchmarks-2026-what-good-looks-like-for-fitness-ecommerce-gaming-and-more",
+        "tier": "tertiary",
+        "retrieved": "2026-08-10"
+      },
+      "note": null,
+      "conflicts": null
+    },
+    "retention_d30_good_pct": {
+      "value": 7.5,
+      "rangeLow": 5.0,
+      "rangeHigh": 10.0,
+      "unit": "percent",
+      "confidence": "tertiary",
+      "source": {
+        "publisher": "Snoopr (citing Business of Apps)",
+        "via": "snoopr.co",
+        "url": "https://www.snoopr.co/blog/mobile-app-retention-benchmarks-2026-what-good-looks-like-for-fitness-ecommerce-gaming-and-more",
+        "tier": "tertiary",
+        "retrieved": "2026-08-10"
+      },
+      "note": null,
+      "conflicts": null
+    },
+    "retention_d1_top_quartile_pct": {
+      "value": 30.0,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "secondary",
+      "source": {
+        "publisher": "Adjust - Mobile App Trends 2026",
+        "via": "core-mba.pro / uxcam summaries",
+        "url": "https://www.core-mba.pro/tool-hub/mobile-app-retention",
+        "tier": "secondary",
+        "retrieved": "2026-08-10"
+      },
+      "note": null,
+      "conflicts": null
+    },
+    "retention_d7_top_quartile_pct": {
+      "value": 15.0,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "secondary",
+      "source": {
+        "publisher": "Adjust - Mobile App Trends 2026",
+        "via": "core-mba.pro / uxcam summaries",
+        "url": "https://www.core-mba.pro/tool-hub/mobile-app-retention",
+        "tier": "secondary",
+        "retrieved": "2026-08-10"
+      },
+      "note": null,
+      "conflicts": null
+    },
+    "retention_d30_top_quartile_pct": {
+      "value": 8.0,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "secondary",
+      "source": {
+        "publisher": "Adjust - Mobile App Trends 2026",
+        "via": "core-mba.pro / uxcam summaries",
+        "url": "https://www.core-mba.pro/tool-hub/mobile-app-retention",
+        "tier": "secondary",
+        "retrieved": "2026-08-10"
+      },
+      "note": null,
+      "conflicts": null
+    },
+    "retention_d30_subscription_pct": {
+      "value": 14.0,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "secondary",
+      "source": {
+        "publisher": "AppsFlyer - State of Subscriptions 2026",
+        "via": "core-mba.pro",
+        "url": "https://www.core-mba.pro/tool-hub/mobile-app-retention",
+        "tier": "secondary",
+        "retrieved": "2026-08-10"
+      },
+      "note": "Business model dominates vertical: 2.5x premium over ad-supported.",
+      "conflicts": null
+    },
+    "retention_d30_ad_supported_pct": {
+      "value": 5.4,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "secondary",
+      "source": {
+        "publisher": "AppsFlyer - State of Subscriptions 2026",
+        "via": "core-mba.pro",
+        "url": "https://www.core-mba.pro/tool-hub/mobile-app-retention",
+        "tier": "secondary",
+        "retrieved": "2026-08-10"
+      },
+      "note": null,
+      "conflicts": null
+    },
+    "dau_lost_by_d30_pct": {
+      "value": 90.0,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "tertiary",
+      "source": {
+        "publisher": "Snoopr (citing Business of Apps)",
+        "via": "snoopr.co",
+        "url": "https://www.snoopr.co/blog/mobile-app-retention-benchmarks-2026-what-good-looks-like-for-fitness-ecommerce-gaming-and-more",
+        "tier": "tertiary",
+        "retrieved": "2026-08-10"
+      },
+      "note": "Business of Apps.",
+      "conflicts": null
+    },
+    "churn_first_3_days_pct": {
+      "value": 72.0,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "tertiary",
+      "source": {
+        "publisher": "Snoopr (citing Business of Apps)",
+        "via": "snoopr.co",
+        "url": "https://www.snoopr.co/blog/mobile-app-retention-benchmarks-2026-what-good-looks-like-for-fitness-ecommerce-gaming-and-more",
+        "tier": "tertiary",
+        "retrieved": "2026-08-10"
+      },
+      "note": null,
+      "conflicts": null
+    },
+    "cpi_ios_global_usd": {
+      "value": 2.24,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "USD",
+      "confidence": "secondary",
+      "source": {
+        "publisher": "The Social Outline (citing Searchlab, Adjust, AppsFlyer, Liftoff 2026)",
+        "via": "thesocialoutline.com",
+        "url": "https://thesocialoutline.com/blog/mobile-app-cpi-benchmarks-2026",
+        "tier": "secondary",
+        "retrieved": "2026-08-10"
+      },
+      "note": null,
+      "conflicts": null
+    },
+    "cpi_android_global_usd": {
+      "value": 1.12,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "USD",
+      "confidence": "secondary",
+      "source": {
+        "publisher": "The Social Outline (citing Searchlab, Adjust, AppsFlyer, Liftoff 2026)",
+        "via": "thesocialoutline.com",
+        "url": "https://thesocialoutline.com/blog/mobile-app-cpi-benchmarks-2026",
+        "tier": "secondary",
+        "retrieved": "2026-08-10"
+      },
+      "note": null,
+      "conflicts": null
+    },
+    "cpi_range_all_verticals_usd": {
+      "value": 13.9,
+      "rangeLow": 1.0,
+      "rangeHigh": 26.81,
+      "unit": "USD",
+      "confidence": "tertiary",
+      "source": {
+        "publisher": "Insert Affiliate (citing Business of Apps, Statista, Mapendo, MAF)",
+        "via": "insertaffiliate.com",
+        "url": "https://insertaffiliate.com/blog/mobile-app-user-acquisition-cost-benchmarks/",
+        "tier": "tertiary",
+        "retrieved": "2026-08-10"
+      },
+      "note": null,
+      "conflicts": null
+    },
+    "att_optin_global_pct": {
+      "value": 27.0,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "secondary",
+      "source": {
+        "publisher": "Liftoff 2026 index",
+        "via": "digitalapplied.com",
+        "url": "https://www.digitalapplied.com/blog/mobile-app-marketing-statistics-2026-install-data",
+        "tier": "secondary",
+        "retrieved": "2026-08-10"
+      },
+      "note": "US 31 / EU 22 / JP 38.",
+      "conflicts": null
+    },
+    "app_store_commission_standard_pct": {
+      "value": 30.0,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "tertiary",
+      "source": {
+        "publisher": "Apple App Store / Google Play published commission schedules",
+        "via": null,
+        "url": null,
+        "tier": "tertiary",
+        "retrieved": "2026-08-10"
+      },
+      "note": null,
+      "conflicts": null
+    },
+    "app_store_commission_reduced_pct": {
+      "value": 15.0,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "tertiary",
+      "source": {
+        "publisher": "Apple App Store / Google Play published commission schedules",
+        "via": null,
+        "url": null,
+        "tier": "tertiary",
+        "retrieved": "2026-08-10"
+      },
+      "note": "Small-business / post-year-one subscription programs.",
+      "conflicts": null
+    },
+    "ltv_cac_min_threshold_ratio": {
+      "value": 1.5,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "ratio",
+      "confidence": "secondary",
+      "source": {
+        "publisher": "The Social Outline (citing Searchlab, Adjust, AppsFlyer, Liftoff 2026)",
+        "via": "thesocialoutline.com",
+        "url": "https://thesocialoutline.com/blog/mobile-app-cpi-benchmarks-2026",
+        "tier": "secondary",
+        "retrieved": "2026-08-10"
+      },
+      "note": "Reported as a campaign viability floor - NOT the 3:1 planning heuristic.",
+      "conflicts": null
+    },
+    "ltv_cac_target_ratio": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "ratio",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "The 3:1 target is a rule of thumb, not a measured benchmark. Left unvalidated.",
+      "conflicts": null
+    },
+    "tech_debt_provision_pct": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "The 30%-of-dev-effort provision is a rule of thumb. Left unvalidated.",
+      "conflicts": null
+    },
+    "crash_rate_user_perceived_max_pct": {
+      "value": 1.09,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "primary",
+      "source": {
+        "publisher": "Google Play — Android vitals bad-behaviour thresholds",
+        "via": null,
+        "url": "https://support.google.com/googleplay/android-developer/answer/9844486",
+        "tier": "primary",
+        "retrieved": "2026-08-24"
+      },
+      "note": "Above this share of daily users experiencing a user-perceived crash, Play treats the app as badly behaved and reduces its discoverability.",
+      "conflicts": null
+    },
+    "anr_rate_user_perceived_max_pct": {
+      "value": 0.47,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "primary",
+      "source": {
+        "publisher": "Google Play — Android vitals bad-behaviour thresholds",
+        "via": null,
+        "url": "https://support.google.com/googleplay/android-developer/answer/9844486",
+        "tier": "primary",
+        "retrieved": "2026-08-24"
+      },
+      "note": "Same threshold mechanism, for Application Not Responding events.",
+      "conflicts": null
+    },
+    "crash_rate_per_device_max_pct": {
+      "value": 8.0,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "primary",
+      "source": {
+        "publisher": "Google Play — Android vitals bad-behaviour thresholds",
+        "via": null,
+        "url": "https://support.google.com/googleplay/android-developer/answer/9844486",
+        "tier": "primary",
+        "retrieved": "2026-08-24"
+      },
+      "note": "Per-device-model threshold, applied in addition to the overall one.",
+      "conflicts": null
+    },
+    "b2b_cac_usd": {
+      "value": 1200,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "USD",
+      "confidence": "tertiary",
+      "source": {
+        "publisher": "Data-Mania B2B SaaS Benchmarks 2026 (synthesising SaaS Capital, ProfitWell and ChartMogul datasets)",
+        "via": "data-mania.com",
+        "url": "https://www.data-mania.com/blog/b2b-saas-benchmarks-2026-annual-report/",
+        "tier": "tertiary",
+        "retrieved": "2026-08-24"
+      },
+      "note": "PROXY — median cost to acquire one B2B SaaS customer, across all segments and deal sizes. An aggregator figure, not read from a primary report, and not specific to any vertical. A $5,400 ACV contract sits at the low end of the range this median spans, so treat it as an order of magnitude rather than a forecast.",
+      "conflicts": null
+    },
+    "b2b_logo_churn_monthly_pct": {
+      "value": 4.5,
+      "rangeLow": 4.0,
+      "rangeHigh": 5.0,
+      "unit": "percent",
+      "confidence": "tertiary",
+      "source": {
+        "publisher": "Data-Mania B2B SaaS Benchmarks 2026 (synthesising SaaS Capital, ProfitWell and ChartMogul datasets)",
+        "via": "data-mania.com",
+        "url": "https://www.data-mania.com/blog/b2b-saas-benchmarks-2026-annual-report/",
+        "tier": "tertiary",
+        "retrieved": "2026-08-24"
+      },
+      "note": "PROXY — SMB-tier monthly logo churn. The all-segment median is 3.5%; SMB runs 4-5% and enterprise under 0.5%. SMB is used because a $450/month licence is an SMB contract.",
+      "conflicts": [
+        {
+          "value": 3.5,
+          "source": "all-segment median, same publisher",
+          "note": "Enterprise medians fall under 0.5%."
+        }
+      ]
+    }
+  }
+}

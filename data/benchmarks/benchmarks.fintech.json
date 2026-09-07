@@ -1,0 +1,229 @@
+{
+  "$schema": "./_schema.json",
+  "verticalId": "fintech",
+  "displayName": "Fintech & Banking",
+  "sector": "Finance",
+  "typicalBusinessModels": [
+    "freemium",
+    "transactional",
+    "subscription"
+  ],
+  "lastReviewed": "2026-08-10",
+  "coverage": {
+    "metricsTotal": 12,
+    "metricsSourced": 5,
+    "metricsPlaceholder": 7,
+    "metricsProxy": 0,
+    "metricsWithConflicts": 1
+  },
+  "metrics": {
+    "arpu_12mo_blended_usd": {
+      "value": 7.62,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "USD",
+      "confidence": "secondary",
+      "source": {
+        "publisher": "Liftoff 2026 index",
+        "via": "digitalapplied.com",
+        "url": "https://www.digitalapplied.com/blog/mobile-app-marketing-statistics-2026-install-data",
+        "tier": "secondary",
+        "retrieved": "2026-08-10"
+      },
+      "note": null,
+      "conflicts": null
+    },
+    "retention_d1_pct": {
+      "value": 26.0,
+      "rangeLow": 22.0,
+      "rangeHigh": 30.0,
+      "unit": "percent",
+      "confidence": "tertiary",
+      "source": {
+        "publisher": "vmobify (compiled from AppsFlyer, Adjust, UXCam)",
+        "via": "vmobify.com",
+        "url": "https://vmobify.com/blog/app-retention-benchmarks",
+        "tier": "tertiary",
+        "retrieved": "2026-08-10"
+      },
+      "note": null,
+      "conflicts": null
+    },
+    "retention_d7_pct": {
+      "value": 17.8,
+      "rangeLow": 17.6,
+      "rangeHigh": 18.0,
+      "unit": "percent",
+      "confidence": "tertiary",
+      "source": {
+        "publisher": "vmobify (compiled from AppsFlyer, Adjust, UXCam)",
+        "via": "vmobify.com",
+        "url": "https://vmobify.com/blog/app-retention-benchmarks",
+        "tier": "tertiary",
+        "retrieved": "2026-08-10"
+      },
+      "note": null,
+      "conflicts": null
+    },
+    "retention_d30_pct": {
+      "value": 2.0,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "secondary",
+      "source": {
+        "publisher": "Adjust - Mobile App Trends 2026",
+        "via": "core-mba.pro / uxcam summaries",
+        "url": "https://www.core-mba.pro/tool-hub/mobile-app-retention",
+        "tier": "secondary",
+        "retrieved": "2026-08-10"
+      },
+      "note": "SOURCES CONFLICT SHARPLY (2% to 12%). Adjust 2026 used as the most recent primary-vendor figure.",
+      "conflicts": [
+        {
+          "value": 2.0,
+          "source": "Adjust Mobile App Trends 2026",
+          "note": "Down from 3% YoY; steepest drop tracked."
+        },
+        {
+          "value": 12.0,
+          "source": "vmobify compilation",
+          "note": "Reported as category average."
+        },
+        {
+          "value": 11.6,
+          "source": "Plotline/Sendbird",
+          "note": "One source states this traces to an AppsFlyer 2023 SUBSCRIPTION cohort, recycled since - likely stale."
+        }
+      ]
+    },
+    "retention_d365_pct": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "cpi_usd": {
+      "value": 15.9,
+      "rangeLow": 5.0,
+      "rangeHigh": 26.81,
+      "unit": "USD",
+      "confidence": "secondary",
+      "source": {
+        "publisher": "The Social Outline (citing Searchlab, Adjust, AppsFlyer, Liftoff 2026)",
+        "via": "thesocialoutline.com",
+        "url": "https://thesocialoutline.com/blog/mobile-app-cpi-benchmarks-2026",
+        "tier": "secondary",
+        "retrieved": "2026-08-10"
+      },
+      "note": "Finance commands the highest CPIs; wide band.",
+      "conflicts": null
+    },
+    "cpi_ios_usd": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "USD",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "cpi_android_usd": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "USD",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "trial_to_paid_pct": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "ltv_usd": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "USD",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "churn_monthly_pct": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "store_conversion_pct": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    }
+  }
+}

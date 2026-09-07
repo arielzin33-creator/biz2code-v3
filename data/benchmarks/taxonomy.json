@@ -1,0 +1,190 @@
+{
+  "lastReviewed": "2026-08-10",
+  "sectors": [
+    "Business",
+    "Commerce",
+    "Education",
+    "Entertainment",
+    "Finance",
+    "Gaming",
+    "Health",
+    "Marketplace",
+    "Productivity",
+    "Social",
+    "Travel & Local"
+  ],
+  "verticals": {
+    "gaming_hypercasual": {
+      "displayName": "Hyper-Casual Gaming",
+      "sector": "Gaming",
+      "typicalBusinessModels": [
+        "ad_supported",
+        "iap"
+      ],
+      "file": "benchmarks.gaming_hypercasual.json"
+    },
+    "gaming_general": {
+      "displayName": "Gaming (broad)",
+      "sector": "Gaming",
+      "typicalBusinessModels": [
+        "iap",
+        "ad_supported",
+        "hybrid"
+      ],
+      "file": "benchmarks.gaming_general.json"
+    },
+    "dating": {
+      "displayName": "Dating",
+      "sector": "Social",
+      "typicalBusinessModels": [
+        "subscription",
+        "freemium"
+      ],
+      "file": "benchmarks.dating.json"
+    },
+    "fintech": {
+      "displayName": "Fintech & Banking",
+      "sector": "Finance",
+      "typicalBusinessModels": [
+        "freemium",
+        "transactional",
+        "subscription"
+      ],
+      "file": "benchmarks.fintech.json"
+    },
+    "streaming": {
+      "displayName": "Subscription Streaming",
+      "sector": "Entertainment",
+      "typicalBusinessModels": [
+        "subscription"
+      ],
+      "file": "benchmarks.streaming.json"
+    },
+    "travel": {
+      "displayName": "Travel & Booking",
+      "sector": "Travel & Local",
+      "typicalBusinessModels": [
+        "transactional",
+        "commission"
+      ],
+      "file": "benchmarks.travel.json"
+    },
+    "navigation_local": {
+      "displayName": "Navigation & Local Discovery",
+      "sector": "Travel & Local",
+      "typicalBusinessModels": [
+        "ad_supported",
+        "commission",
+        "b2b_licensing",
+        "freemium"
+      ],
+      "file": "benchmarks.navigation_local.json"
+    },
+    "health_fitness": {
+      "displayName": "Health & Fitness",
+      "sector": "Health",
+      "typicalBusinessModels": [
+        "subscription",
+        "freemium"
+      ],
+      "file": "benchmarks.health_fitness.json"
+    },
+    "education": {
+      "displayName": "Education & EdTech",
+      "sector": "Education",
+      "typicalBusinessModels": [
+        "subscription",
+        "freemium",
+        "one_time"
+      ],
+      "file": "benchmarks.education.json"
+    },
+    "ecommerce_retail": {
+      "displayName": "E-commerce & Retail",
+      "sector": "Commerce",
+      "typicalBusinessModels": [
+        "transactional",
+        "commission"
+      ],
+      "file": "benchmarks.ecommerce_retail.json"
+    },
+    "food_delivery": {
+      "displayName": "Food Delivery & Ordering",
+      "sector": "Commerce",
+      "typicalBusinessModels": [
+        "commission",
+        "transactional"
+      ],
+      "file": "benchmarks.food_delivery.json"
+    },
+    "social_media": {
+      "displayName": "Social Networking",
+      "sector": "Social",
+      "typicalBusinessModels": [
+        "ad_supported",
+        "freemium"
+      ],
+      "file": "benchmarks.social_media.json"
+    },
+    "productivity": {
+      "displayName": "Productivity & Utilities",
+      "sector": "Productivity",
+      "typicalBusinessModels": [
+        "subscription",
+        "freemium",
+        "one_time"
+      ],
+      "file": "benchmarks.productivity.json"
+    },
+    "b2b_saas": {
+      "displayName": "B2B SaaS",
+      "sector": "Business",
+      "typicalBusinessModels": [
+        "subscription",
+        "seat_based",
+        "usage_based"
+      ],
+      "file": "benchmarks.b2b_saas.json"
+    },
+    "real_estate": {
+      "displayName": "Real Estate & Property",
+      "sector": "Marketplace",
+      "typicalBusinessModels": [
+        "commission",
+        "lead_gen",
+        "b2b_licensing"
+      ],
+      "file": "benchmarks.real_estate.json"
+    },
+    "media_news": {
+      "displayName": "Media & News",
+      "sector": "Entertainment",
+      "typicalBusinessModels": [
+        "subscription",
+        "ad_supported"
+      ],
+      "file": "benchmarks.media_news.json"
+    }
+  },
+  "businessModels": {
+    "freemium": "Free core with paid upgrade tier.",
+    "subscription": "Recurring periodic fee.",
+    "iap": "In-app purchases of virtual or digital goods.",
+    "ad_supported": "Revenue from advertising impressions/clicks.",
+    "transactional": "Fee per completed transaction.",
+    "commission": "Percentage cut of a third-party transaction.",
+    "b2b_licensing": "Licence sold to businesses rather than end users.",
+    "lead_gen": "Payment per qualified lead delivered to a business.",
+    "seat_based": "Priced per user seat.",
+    "usage_based": "Priced per unit of consumption.",
+    "one_time": "Single upfront purchase.",
+    "hybrid": "Two or more of the above combined."
+  },
+  "platforms": [
+    "ios",
+    "android",
+    "web",
+    "cross_platform",
+    "pwa"
+  ]
+}

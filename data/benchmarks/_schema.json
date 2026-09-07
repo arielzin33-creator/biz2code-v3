@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "biz2code benchmark file",
+  "type": "object",
+  "required": [
+    "verticalId",
+    "displayName",
+    "lastReviewed",
+    "metrics"
+  ],
+  "properties": {
+    "verticalId": {
+      "type": "string"
+    },
+    "displayName": {
+      "type": "string"
+    },
+    "sector": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "lastReviewed": {
+      "type": "string",
+      "format": "date"
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "value",
+          "unit",
+          "confidence",
+          "source"
+        ],
+        "properties": {
+          "value": {
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "unit": {
+            "type": "string"
+          },
+          "confidence": {
+            "enum": [
+              "primary",
+              "secondary",
+              "placeholder"
+            ]
+          },
+          "source": {
+            "type": "object"
+          },
+          "note": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "confidence": {
+                  "const": "placeholder"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "value": {
+                  "type": "null"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

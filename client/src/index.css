@@ -1,0 +1,91 @@
+/*
+  Base styles, on the biz2code design system (Other/Design/biz2code Design system 2).
+
+  Two anchors, both pixel-sampled from the logo: Cyan #13A8E2 and Navy #154F6B.
+  Body text is Navy-800 on Neutral-50 (16.24:1); anything carrying white text
+  uses Cyan-600 or darker — Cyan-500 is a decorative fill only (2.72:1, fails
+  WCAG). See tokens.css for the full ramp and semantic-alias layer.
+*/
+
+@import './styles/tokens.css';
+
+* { box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--surface-page);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-lh);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+button { font: inherit; cursor: pointer; }
+button:disabled { cursor: not-allowed; opacity: 0.5; }
+input, select, textarea { font: inherit; }
+
+a { color: var(--text-link); }
+a:hover { color: var(--text-link-hover); }
+
+/* The generation progress bar. Generation takes ~70s; a static screen for that
+   long reads as a hang, so something has to move. */
+@keyframes b2c-slide {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(320%); }
+}
+
+@keyframes b2c-spin {
+  to { transform: rotate(360deg); }
+}
+
+/*
+  Honour the OS motion preference (DEF-07).
+
+  This is the only animation in the product and it runs for about seventy
+  seconds, which is exactly the kind of sustained motion the preference exists
+  to stop. The bar is not removed — the user still needs to know work is
+  happening — it stops travelling and holds as a full-width band instead.
+*/
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  [style*="b2c-slide"] { width: 100% !important; }
+}
+
+/*
+  Long unbroken strings must wrap (DEF-06).
+
+  Measured before this rule: a 400-character answer with no spaces produced
+  2,045px of content in a 320px viewport — 1,725px of horizontal scroll, a
+  WCAG 1.4.10 Reflow failure. The realistic trigger is a pasted URL, not
+  adversarial input.
+
+  `anywhere` rather than `break-word` so the break is also allowed to shrink the
+  element's intrinsic minimum width, which is what actually stops a flex or grid
+  child from forcing the page wider than the viewport.
+*/
+h1, h2, h3, p, li, td, th, label, textarea, input, select {
+  overflow-wrap: anywhere;
+}
+
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible {
+  outline: 3px solid var(--cyan-200);
+  outline-offset: 1px;
+}
+
+fieldset { min-width: 0; border: none; margin: 0; padding: 0; } /* fieldsets refuse to shrink without this */
+code { font-family: var(--font-mono); font-size: 0.92em; }

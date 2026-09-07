@@ -1,0 +1,895 @@
+{
+  "version": "2.0",
+  "lastReviewed": "2026-08-24",
+  "rules": {
+    "questionsAreFixed": "Questions are seeded, never LLM-generated. The LLM produces documents only.",
+    "conditionalBranching": "Deferred - not in MVP. dependsOnQuestionId reserved but unused.",
+    "revise": "Editing an individual answer re-runs generation for the affected fields only.",
+    "generationOrder": "All 4 phases are answered first, then MRD -> PRD -> Business Plan, because bp.product_weaknesses depends on the other two.",
+    "noMarketEstimatesAsked": "The founder is asked for objectives and decisions only — never for a market size, a conversion rate or a customer lifetime. Those are derived from published sources so that the plan has an independent view to validate his goals against. Retired for this reason: p2q3 (reachable market), p4q3 (expected conversion), p4q6 (expected lifetime).",
+    "twoViewsThenAVerdict": "Every document carries two figures for the same quantity: what the founder is aiming at, and what the sources support. The Business Plan closes with a verdict comparing them.",
+    "revenueIsABand": "The revenue objective is one question with two bounds (p4q8), not two questions. A founder asked separately for a target and a walk-away figure gives two unrelated numbers; asked for a band he has to say what \"worth doing\" actually spans. p4q11 was folded in as the lower bound."
+  },
+  "phases": [
+    {
+      "phaseId": "p1",
+      "order": 1,
+      "name": "Idea & Strategic Goal",
+      "description": "Establishes what the product is, who it serves, and what success means.",
+      "primaryDocument": "business_plan"
+    },
+    {
+      "phaseId": "p2",
+      "order": 2,
+      "name": "Market & Audience",
+      "description": "Establishes who the user is and where they are. How big the market is, is derived from published statistics — never asked.",
+      "primaryDocument": "mrd"
+    },
+    {
+      "phaseId": "p3",
+      "order": 3,
+      "name": "Product & Features",
+      "description": "Translates market needs into scoped, prioritised functionality.",
+      "primaryDocument": "prd"
+    },
+    {
+      "phaseId": "p4",
+      "order": 4,
+      "name": "Your Objectives",
+      "description": "What you want the product to achieve and what you can spend to get there. No market estimate is requested here; every figure the plan rests on is derived and then compared against these goals.",
+      "primaryDocument": "business_plan"
+    }
+  ],
+  "questions": [
+    {
+      "questionId": "p1q1",
+      "phaseId": "p1",
+      "order": 1,
+      "text": "In one or two sentences, what does your app do and who is it for?",
+      "type": "text",
+      "required": true,
+      "inDemoSet": true,
+      "helpText": "This single answer seeds the Vision, the Problem statement and the Product Vision. Be concrete: what the user does, and what they get.",
+      "feeds": [
+        "bp.working_project_name",
+        "bp.business_idea",
+        "mrd.the_problem",
+        "prd.product_vision"
+      ],
+      "placeholder": "An indoor navigation app that guides shoppers to specific products inside large stores and malls."
+    },
+    {
+      "questionId": "p1q2",
+      "phaseId": "p1",
+      "order": 2,
+      "text": "Which category best describes it?",
+      "type": "select",
+      "required": true,
+      "inDemoSet": true,
+      "helpText": "Selects which benchmark file the app is permitted to cite. If your category has no sourced data, figures will be marked 'unvalidated'.",
+      "feeds": [
+        "bp.business_idea",
+        "mrd.market_audience_sizing",
+        "_benchmark_vertical"
+      ],
+      "options": [
+        "Navigation & Local Discovery",
+        "Gaming (broad)",
+        "Hyper-Casual Gaming",
+        "Dating",
+        "Fintech & Banking",
+        "Subscription Streaming",
+        "Travel & Booking",
+        "Health & Fitness",
+        "Education & EdTech",
+        "E-commerce & Retail",
+        "Food Delivery & Ordering",
+        "Social Networking",
+        "Productivity & Utilities",
+        "B2B SaaS",
+        "Real Estate & Property",
+        "Media & News"
+      ]
+    },
+    {
+      "questionId": "p1q3",
+      "phaseId": "p1",
+      "order": 3,
+      "text": "What is the single most important outcome in your first 12 months?",
+      "type": "select",
+      "required": true,
+      "inDemoSet": false,
+      "helpText": "Sets the OKR frame. Everything downstream is judged against this.",
+      "feeds": [
+        "bp.business_goals_okrs",
+        "bp.executive_summary"
+      ],
+      "options": [
+        "Reach a user-count milestone",
+        "Reach a revenue milestone",
+        "Prove retention / product-market fit",
+        "Secure external funding",
+        "Sign business/enterprise customers"
+      ]
+    },
+    {
+      "questionId": "p1q4",
+      "phaseId": "p1",
+      "order": 4,
+      "text": "Which platforms will you launch on?",
+      "type": "multiselect",
+      "required": true,
+      "inDemoSet": false,
+      "helpText": "Affects acquisition-cost benchmarks — reported iOS and Android CPIs differ materially.",
+      "feeds": [
+        "bp.business_idea",
+        "prd.release_plan",
+        "_benchmark_platform"
+      ],
+      "options": [
+        "iOS",
+        "Android",
+        "Web",
+        "Cross-platform",
+        "PWA"
+      ]
+    },
+    {
+      "questionId": "p1q5",
+      "phaseId": "p1",
+      "order": 5,
+      "text": "What is your unique advantage over anyone else solving this?",
+      "type": "text",
+      "required": true,
+      "inDemoSet": false,
+      "helpText": "The UVP. If you cannot name one, that is itself a finding the Business Plan should report.",
+      "feeds": [
+        "bp.business_idea",
+        "bp.executive_summary",
+        "mrd.the_problem"
+      ],
+      "placeholder": "Existing maps stop at the building entrance; we map the interior and sell placement to store owners."
+    },
+    {
+      "questionId": "p2q1",
+      "phaseId": "p2",
+      "order": 1,
+      "text": "Who is the user, and who actually pays? (If different, describe both.)",
+      "type": "text",
+      "required": true,
+      "inDemoSet": false,
+      "helpText": "Functional (user) vs economic (buyer) segments. In an ad- or B2B-funded model these are rarely the same person.",
+      "feeds": [
+        "mrd.target_vs_market_audiences",
+        "mrd.segmentation_personas",
+        "bp.business_idea"
+      ],
+      "placeholder": "Users are shoppers navigating a mall. Payers are store owners and mall operators buying placement."
+    },
+    {
+      "questionId": "p2q2",
+      "phaseId": "p2",
+      "order": 2,
+      "text": "Which geographic market are you launching in first?",
+      "type": "text",
+      "required": true,
+      "inDemoSet": false,
+      "helpText": "Used to pull the population, urbanisation and internet-penetration figures that the market size is calculated from. You are never asked how big the market is — it is derived.",
+      "feeds": [
+        "mrd.market_audience_sizing",
+        "_worldbank_country"
+      ],
+      "placeholder": "Israel"
+    },
+    {
+      "questionId": "p2q4",
+      "phaseId": "p2",
+      "order": 4,
+      "text": "Name up to three existing products users could use instead.",
+      "type": "text",
+      "required": true,
+      "inDemoSet": false,
+      "helpText": "Queried against the App Store to retrieve real pricing, ratings and category. 'Nothing' is a valid answer — and usually a warning sign, not a moat.",
+      "feeds": [
+        "mrd.the_problem",
+        "mrd.market_validation_statistics",
+        "bp.product_weaknesses"
+      ],
+      "placeholder": "Google Maps, Waze, individual mall apps"
+    },
+    {
+      "questionId": "p2q5",
+      "phaseId": "p2",
+      "order": 5,
+      "text": "What do users do today, and why is it unsatisfying?",
+      "type": "text",
+      "required": true,
+      "inDemoSet": false,
+      "helpText": "The unsatisfied need. Describe the current workaround, not the ideal.",
+      "feeds": [
+        "mrd.the_problem",
+        "mrd.market_requirements"
+      ],
+      "placeholder": "They wander, ask staff, or give up. Large venues have no reliable indoor wayfinding."
+    },
+    {
+      "questionId": "p2q6",
+      "phaseId": "p2",
+      "order": 6,
+      "text": "Which group are you aiming at?",
+      "type": "multiselect",
+      "required": true,
+      "inDemoSet": true,
+      "maxSelections": 2,
+      "helpText": "This narrows the market from everyone in your country down to the people you actually serve. Every option is filtered using a published national statistic — none of it is estimated. Choosing two assumes the groups overlap independently, and the documents say so.",
+      "feeds": [
+        "mrd.market_audience_sizing",
+        "mrd.segmentation_personas",
+        "_sam_segment"
+      ],
+      "options": [
+        "Everyone in the market",
+        "Children and teenagers (0–14)",
+        "Young people (15–24)",
+        "Working-age adults (15–64)",
+        "Older adults (65+)",
+        "Women",
+        "Men",
+        "People living in cities",
+        "People in the labour force",
+        "People who use the internet",
+        "Registered businesses (B2B)"
+      ]
+    },
+    {
+      "questionId": "p3q1",
+      "phaseId": "p3",
+      "order": 1,
+      "text": "List the core features a first version must have.",
+      "type": "text",
+      "required": true,
+      "inDemoSet": true,
+      "helpText": "Only what is required for the product to function at all. Everything else belongs in the next question.",
+      "feeds": [
+        "prd.product_features_scope",
+        "prd.release_plan",
+        "mrd.market_requirements"
+      ],
+      "placeholder": "Indoor map rendering, live position, search for a store or product, turn-by-turn route."
+    },
+    {
+      "questionId": "p3q2",
+      "phaseId": "p3",
+      "order": 2,
+      "text": "List features you want but could launch without.",
+      "type": "text",
+      "required": true,
+      "inDemoSet": false,
+      "helpText": "Feeds the RICE prioritisation and the phased rollout plan.",
+      "feeds": [
+        "prd.product_features_scope",
+        "prd.prioritization_resource_impact",
+        "prd.release_plan"
+      ],
+      "placeholder": "Accessibility routing, offline maps, promotions from nearby stores, multi-floor transitions."
+    },
+    {
+      "questionId": "p3q3",
+      "phaseId": "p3",
+      "order": 3,
+      "text": "What is the single most important thing a user must be able to do?",
+      "type": "text",
+      "required": true,
+      "inDemoSet": false,
+      "helpText": "The primary value proposition, expressed as an action. Activation metrics are defined against this.",
+      "feeds": [
+        "prd.product_vision",
+        "prd.success_metrics_kpis",
+        "bp.executive_summary"
+      ],
+      "placeholder": "Find a specific product inside a venue and be walked to it."
+    },
+    {
+      "questionId": "p3q4",
+      "phaseId": "p3",
+      "order": 4,
+      "text": "How will you know the product is working?",
+      "type": "multiselect",
+      "required": true,
+      "inDemoSet": false,
+      "helpText": "Selects which KPI families the PRD reports, benchmarked against your category where data exists.",
+      "feeds": [
+        "prd.success_metrics_kpis",
+        "bp.business_goals_okrs"
+      ],
+      "options": [
+        "Users return regularly (retention)",
+        "Users complete the core action (activation)",
+        "Users convert to paying (monetisation)",
+        "Technical stability (crash-free, performance)",
+        "Users recommend it (referral / virality)"
+      ]
+    },
+    {
+      "questionId": "p3q5",
+      "phaseId": "p3",
+      "order": 5,
+      "text": "What is the biggest technical risk or constraint you already know about?",
+      "type": "text",
+      "required": false,
+      "inDemoSet": false,
+      "helpText": "Surfaced honestly in the Business Plan's weakness section rather than discovered after build.",
+      "feeds": [
+        "prd.product_recommendations",
+        "bp.product_weaknesses",
+        "prd.prioritization_resource_impact"
+      ],
+      "placeholder": "Indoor positioning without GPS needs venue-by-venue surveying — it does not scale on its own."
+    },
+    {
+      "questionId": "p4q1",
+      "phaseId": "p4",
+      "order": 1,
+      "text": "How will the product make money?",
+      "type": "select",
+      "required": true,
+      "inDemoSet": false,
+      "helpText": "Business model is reported to predict retention more strongly than category — this drives which benchmarks apply.",
+      "feeds": [
+        "bp.revenue_projection",
+        "bp.gtm_strategy",
+        "_business_model"
+      ],
+      "options": [
+        "Subscription",
+        "Freemium (free tier + paid upgrade)",
+        "In-app purchases",
+        "Advertising",
+        "Commission on transactions",
+        "Sold to businesses (B2B licence)",
+        "One-time purchase",
+        "Not yet decided"
+      ]
+    },
+    {
+      "questionId": "p4q2",
+      "phaseId": "p4",
+      "order": 2,
+      "text": "What do you intend to charge, per paying customer per month?",
+      "type": "number",
+      "required": true,
+      "inDemoSet": true,
+      "helpText": "A decision you control, not a prediction. It is checked against what comparable apps actually charge on the App Store and against the published category ARPU, and any large divergence is flagged.",
+      "feeds": [
+        "bp.revenue_projection",
+        "calc.arpu_input"
+      ],
+      "numeric": {
+        "unit": "USD/month",
+        "min": 0,
+        "max": 100000
+      }
+    },
+    {
+      "questionId": "p4q4",
+      "phaseId": "p4",
+      "order": 4,
+      "text": "What will you spend per month to build and run this, excluding marketing?",
+      "type": "number",
+      "required": true,
+      "inDemoSet": false,
+      "helpText": "Engineering, infrastructure, tools and services. Marketing is asked separately because it is the number that determines how many users your money can actually reach.",
+      "feeds": [
+        "bp.budget_cost_projections",
+        "calc.opex_input"
+      ],
+      "numeric": {
+        "unit": "USD/month",
+        "min": 0,
+        "max": 10000000
+      }
+    },
+    {
+      "questionId": "p4q5",
+      "phaseId": "p4",
+      "order": 5,
+      "text": "How will the first users find you?",
+      "type": "multiselect",
+      "required": true,
+      "inDemoSet": false,
+      "helpText": "Paid channels are costed against published cost-per-install benchmarks; organic channels are not, and the plan says so.",
+      "feeds": [
+        "bp.gtm_strategy",
+        "calc.cac_channel",
+        "bp.final_summary_outcome"
+      ],
+      "options": [
+        "Paid advertising",
+        "App store search (ASO)",
+        "Content / SEO",
+        "Social media",
+        "Partnerships with businesses",
+        "Direct sales",
+        "Word of mouth / referral"
+      ]
+    },
+    {
+      "questionId": "p4q7",
+      "order": 7,
+      "text": "What will you spend per month on reaching new users?",
+      "type": "number",
+      "required": true,
+      "inDemoSet": false,
+      "helpText": "Advertising, app-store ads, paid placements — anything whose job is to bring users in. This is divided by the published cost-per-install for your category to work out how many users your money actually buys. Enter 0 if you plan to grow only organically.",
+      "feeds": [
+        "calc.som_budget_constrained",
+        "bp.gtm_strategy",
+        "bp.budget_cost_projections"
+      ],
+      "numeric": {
+        "unit": "USD/month",
+        "min": 0,
+        "max": 10000000
+      },
+      "phaseId": "p4"
+    },
+    {
+      "questionId": "p4q8",
+      "order": 8,
+      "text": "What monthly revenue would make this worth doing?",
+      "type": "range",
+      "required": true,
+      "inDemoSet": true,
+      "helpText": "Give a band, not a point. The lower figure is the revenue below which you would stop — your floor. The upper figure is what you are actually aiming at. Both are goals, not predictions: the app works out independently what your category, market and budget support, and reports where that lands against your band.",
+      "feeds": [
+        "_objective_revenue_floor",
+        "_objective_revenue_target",
+        "bp.validation_verdict",
+        "bp.final_summary_outcome"
+      ],
+      "numeric": {
+        "unit": "USD/month",
+        "min": 0,
+        "max": 1000000000
+      },
+      "phaseId": "p4"
+    },
+    {
+      "questionId": "p4q9",
+      "order": 9,
+      "text": "How many active users would you count as success?",
+      "type": "number",
+      "required": true,
+      "inDemoSet": false,
+      "helpText": "Again a goal, not an estimate. Judged separately from the revenue goal, because reach and money can fail independently — and knowing which one fails tells you what to fix.",
+      "feeds": [
+        "_objective_users",
+        "bp.validation_verdict",
+        "bp.final_summary_outcome"
+      ],
+      "numeric": {
+        "unit": "people",
+        "min": 1,
+        "max": 1000000000
+      },
+      "phaseId": "p4"
+    },
+    {
+      "questionId": "p4q10",
+      "order": 10,
+      "text": "By when do you want to have reached those two goals?",
+      "type": "select",
+      "required": true,
+      "inDemoSet": false,
+      "helpText": "The projection runs month by month to this horizon, and the verdict is issued at it. A goal that is unreachable in 6 months is often reachable in 24 — the app says which.",
+      "feeds": [
+        "_objective_horizon_months",
+        "bp.validation_verdict",
+        "bp.revenue_projection"
+      ],
+      "options": [
+        "6 months",
+        "12 months",
+        "18 months",
+        "24 months"
+      ],
+      "phaseId": "p4"
+    }
+  ],
+  "demoSet": {
+    "description": "The 5 questions answered LIVE on Demo Day. The seed project pre-fills the rest; these 5 are cleared and re-entered on stage. Chosen to touch all three documents, exercise text/select/multiselect/number input, and drive both the derivation chain and the verdict.",
+    "questionIds": [
+      "p1q1",
+      "p1q2",
+      "p2q6",
+      "p3q1",
+      "p4q8"
+    ],
+    "coverage": {
+      "business_plan": [
+        "p1q1",
+        "p1q2",
+        "p4q8"
+      ],
+      "mrd": [
+        "p1q1",
+        "p1q2",
+        "p2q6"
+      ],
+      "prd": [
+        "p1q1",
+        "p3q1"
+      ],
+      "derivationLayer": [
+        "p2q6"
+      ],
+      "validationVerdict": [
+        "p4q8"
+      ],
+      "benchmarkSelection": [
+        "p1q2"
+      ]
+    },
+    "remainingAnswers": "Pre-filled from seed-project.json (indoor navigation). Visible and editable, but not typed on stage."
+  },
+  "derivedFields": {
+    "business_plan": [
+      {
+        "field": "bp.executive_summary",
+        "derivedFrom": "All phases, STAR structure",
+        "note": "Written last."
+      },
+      {
+        "field": "bp.budget_cost_projections.engineering",
+        "derivedFrom": "p4q4 + tech-debt provision",
+        "note": "Provision is a rule of thumb - renders unvalidated."
+      },
+      {
+        "field": "bp.budget_cost_projections.infrastructure",
+        "derivedFrom": "p4q4 split",
+        "note": "LLM allocates; no external source."
+      },
+      {
+        "field": "bp.budget_cost_projections.app_store_fees",
+        "derivedFrom": "p4q1 + store commission benchmark",
+        "note": "Sourced (30%/15%)."
+      },
+      {
+        "field": "bp.budget_cost_projections.monthly_tco",
+        "derivedFrom": "calculation layer",
+        "note": "Computed, not generated."
+      },
+      {
+        "field": "bp.revenue_projection.unit_economics",
+        "derivedFrom": "calculation layer (LTV:CAC)",
+        "note": "Computed."
+      },
+      {
+        "field": "bp.revenue_projection.extrapolation",
+        "derivedFrom": "calculation layer (ARPU x MAU x (1-churn))",
+        "note": "Computed."
+      },
+      {
+        "field": "bp.revenue_projection.rpv",
+        "derivedFrom": "calculation layer",
+        "note": "Computed."
+      },
+      {
+        "field": "bp.revenue_projection.projected_growth",
+        "derivedFrom": "LLM narrative + retention benchmark",
+        "note": "k-factor unvalidated."
+      },
+      {
+        "field": "bp.product_weaknesses",
+        "derivedFrom": "MRD gaps + PRD constraints",
+        "note": "Requires MRD+PRD generated FIRST."
+      },
+      {
+        "field": "bp.final_summary_outcome",
+        "derivedFrom": "calculation layer (payback period)",
+        "note": "Computed."
+      },
+      {
+        "field": "bp.data_sources",
+        "derivedFrom": "provenance ledger",
+        "note": "Auto-filled: which answers, benchmarks and API calls were used."
+      }
+    ],
+    "mrd": [
+      {
+        "field": "mrd.market_requirements",
+        "derivedFrom": "p2q5 + p3q1, restated as 'The user shall...'"
+      },
+      {
+        "field": "mrd.market_validation_statistics",
+        "derivedFrom": "benchmark file + iTunes competitor data",
+        "note": "Unvalidated where no sourced figure exists."
+      },
+      {
+        "field": "mrd.market_audience_sizing",
+        "derivedFrom": "p2q2 + p2q3 + World Bank indicators"
+      },
+      {
+        "field": "mrd.revenue_potential_by_segment",
+        "derivedFrom": "category ARPU benchmark x segment",
+        "note": "Unvalidated for categories lacking ARPU data."
+      },
+      {
+        "field": "mrd.segmentation_personas",
+        "derivedFrom": "p2q1 expanded by LLM",
+        "note": "Extrapolated - flag as such."
+      },
+      {
+        "field": "mrd.data_sources",
+        "derivedFrom": "provenance ledger"
+      }
+    ],
+    "prd": [
+      {
+        "field": "prd.prioritization_resource_impact.rice",
+        "derivedFrom": "calculation layer over p3q1+p3q2",
+        "note": "Impact/Confidence are LLM estimates - flag."
+      },
+      {
+        "field": "prd.prioritization_resource_impact.dev_cost",
+        "derivedFrom": "p4q4 x estimated person-months"
+      },
+      {
+        "field": "prd.success_metrics_kpis.technical_health",
+        "derivedFrom": "p3q4 + benchmarks",
+        "note": "Crash-free/ANR/cold-start targets currently UNVALIDATED - no sourced figures."
+      },
+      {
+        "field": "prd.success_metrics_kpis.growth",
+        "derivedFrom": "p3q4 + retention/conversion benchmarks"
+      },
+      {
+        "field": "prd.success_metrics_kpis.ux_vitals",
+        "derivedFrom": "p3q4",
+        "note": "Rage-tap / UI-freeze targets UNVALIDATED."
+      },
+      {
+        "field": "prd.release_plan",
+        "derivedFrom": "p3q1 (MVP) + p3q2 (phased) + p1q4"
+      },
+      {
+        "field": "prd.product_recommendations",
+        "derivedFrom": "p3q5 + LLM synthesis"
+      },
+      {
+        "field": "prd.data_sources",
+        "derivedFrom": "provenance ledger"
+      }
+    ]
+  },
+  "calculationLayer": {
+    "description": "Deterministic arithmetic. The LLM never computes these - it receives the results and narrates them.",
+    "inputs": [
+      "p4q1 business_model",
+      "p4q2 price_per_month (answered decision)",
+      "p4q4 monthly_opex_build_run (answered constraint)",
+      "p4q5 acquisition_channels",
+      "p4q7 acquisition_budget (answered constraint)",
+      "p4q8 objective_revenue band: floor and target (goals, judged — never inputs to a projection)",
+      "p4q9 objective_users (goal, judged — never an input to a projection)",
+      "p4q10 objective_horizon_months",
+      "derivationLayer.som_payers_at_horizon (derived, replaces the retired p2q3)"
+    ],
+    "formulas": [
+      {
+        "id": "paying_users",
+        "expr": "derivationLayer.som_payers_at_horizon",
+        "note": "DERIVED, not answered. Was reachable_market * conversion_pct, both of which the founder used to supply. Both questions are retired."
+      },
+      {
+        "id": "gross_monthly_revenue",
+        "expr": "paying_users * price_per_month"
+      },
+      {
+        "id": "store_commission",
+        "expr": "gross_monthly_revenue * (commission_pct / 100)",
+        "note": "Applied only for app-store distributed models. commission_pct from benchmarks (30 standard / 15 reduced)."
+      },
+      {
+        "id": "net_monthly_revenue",
+        "expr": "gross_monthly_revenue - store_commission"
+      },
+      {
+        "id": "monthly_tco",
+        "expr": "monthly_opex + store_commission"
+      },
+      {
+        "id": "monthly_profit",
+        "expr": "net_monthly_revenue - monthly_opex"
+      },
+      {
+        "id": "arpu_effective",
+        "expr": "net_monthly_revenue / reachable_market",
+        "note": "Compared against the category ARPU benchmark; divergence >2x is flagged."
+      },
+      {
+        "id": "cac_estimate",
+        "expr": "cpi_benchmark / (conversion_pct / 100)",
+        "note": "cpi_benchmark from the category file. UNVALIDATED if the category has no CPI figure."
+      },
+      {
+        "id": "ltv_cac_ratio",
+        "expr": "ltv_estimate / cac_estimate",
+        "note": "Compared against the sourced 1.5x viability floor. The 3:1 target is unvalidated and must not be asserted."
+      },
+      {
+        "id": "payback_period_months",
+        "expr": "cac_estimate / price_per_month",
+        "note": "Infinite if price is 0 - reported as 'not applicable for this model', never as a number."
+      },
+      {
+        "id": "ltv_estimate",
+        "expr": "price_per_month * benchmark_implied_lifetime_months",
+        "note": "Lifetime is now DERIVED from the category retention or churn benchmark. It was answered (p4q6), which made LTV an assumption resting on a guess."
+      },
+      {
+        "id": "objective_revenue_gap",
+        "expr": "derived_monthly_revenue vs [objective_floor, objective_target]",
+        "note": "Judged against a band. Below the floor is a stop; inside the band is a proceed; above the target beats the goal. Reported with the ratio to each end."
+      },
+      {
+        "id": "objective_users_gap",
+        "expr": "som_payers_at_horizon - objective_users",
+        "note": "Judged separately from revenue: reach and monetisation fail independently."
+      },
+      {
+        "id": "required_budget_for_objective",
+        "expr": "objective_revenue / derived_monthly_revenue * acquisition_budget",
+        "note": "Back-solve. What the acquisition budget would have to be for the goal to hold, all else equal. One of three levers reported; the others are price and horizon."
+      },
+      {
+        "id": "required_price_for_objective",
+        "expr": "objective_revenue / (som_payers_at_horizon * (1 - commission_pct/100))",
+        "note": "Back-solve on price, compared against competitor prices so the reader can see whether that price is one anybody in the category actually charges."
+      },
+      {
+        "id": "months_to_objective",
+        "expr": "first month where projected_revenue(month) >= objective_revenue",
+        "note": "Null when the projection never reaches it inside 60 months, which is itself the answer."
+      }
+    ],
+    "guardrails": [
+      "Any formula whose inputs include a placeholder benchmark returns null and renders 'unvalidated'.",
+      "Division by zero returns null with an explanation, never Infinity or NaN.",
+      "Every computed value carries the confidence tier of its weakest input.",
+      "Results are passed to the LLM as pre-computed facts. The LLM must not recalculate them.",
+      "A lifetime the user asserts is an assumption, never a measurement. It is reported alongside what the published retention benchmark implies, so an unsupported figure is visible rather than silently multiplied into LTV.",
+      "An objective is never an input to a projection. It is only ever compared against one.",
+      "Back-solved levers are reported as what would have to be true, never as a recommendation to assume it."
+    ],
+    "derivations": [
+      {
+        "id": "benchmark_implied_lifetime_months",
+        "expr": "100 / (100 - retention_d30_pct)",
+        "note": "Average lifetime = 1 / monthly churn, with D30 retention read as monthly retention. NOT used as expected_lifetime_months. D30 retention counts installs still opening the app, not customers still paying — a different population — so it is used only to cross-check the answer to p4q6. Unvalidated where the category has no sourced D30 figure. churn_monthly_pct would be preferred if any vertical published one; as of the 2026-08-10 review, zero of sixteen do."
+      }
+    ],
+    "comparisons": [
+      {
+        "id": "lifetime_vs_benchmark",
+        "note": "Flags when the answered lifetime diverges more than 2x from benchmark_implied_lifetime_months. Reported as a divergence, never as a correction: the benchmark measures a different population and may legitimately not apply."
+      },
+      {
+        "id": "arpu_vs_benchmark",
+        "note": "Divergence greater than 2x from the category ARPU benchmark is flagged."
+      },
+      {
+        "id": "ltv_cac_vs_floor",
+        "note": "Judged against the sourced 1.5x campaign viability floor only."
+      }
+    ]
+  },
+  "derivationLayer": {
+    "description": "How the market is sized without asking the founder. Each step names the source it reads. A step whose source is missing renders unvalidated and stops the chain below it — it is never bridged with an assumption.",
+    "chain": [
+      {
+        "id": "tam_people",
+        "expr": "population(country) * (internet_users_pct / 100)",
+        "sources": [
+          "World Bank SP.POP.TOTL",
+          "World Bank IT.NET.USER.ZS"
+        ],
+        "note": "Total addressable people in the market the founder named (p2q2)."
+      },
+      {
+        "id": "sam_people",
+        "expr": "tam_people * segment_filter * platform_share",
+        "sources": [
+          "World Bank (per segment, see segments below)",
+          "StatCounter platform share"
+        ],
+        "note": "segment_filter comes from p2q6. Two segments multiply, which assumes independence — a caveat the documents must carry. platform_share comes from p1q4."
+      },
+      {
+        "id": "installs_affordable_monthly",
+        "expr": "acquisition_budget / cpi_usd",
+        "sources": [
+          "p4q7 answered budget",
+          "benchmark cpi_usd"
+        ],
+        "note": "The budget-constrained route. Unvalidated where the category has no sourced CPI."
+      },
+      {
+        "id": "som_payers_at_horizon",
+        "expr": "sum over months of (installs_affordable_monthly * store_conversion_pct/100 * surviving_fraction(month))",
+        "sources": [
+          "benchmark store_conversion_pct",
+          "benchmark retention_d30_pct or churn_monthly_pct"
+        ],
+        "note": "Cohorts accumulate and decay. This is the serviceable obtainable market, derived — it replaces the retired p2q3."
+      },
+      {
+        "id": "derived_monthly_revenue",
+        "expr": "som_payers_at_horizon * price_per_month * (1 - commission_pct/100)",
+        "sources": [
+          "p4q2 answered price",
+          "benchmark app_store_commission_standard_pct"
+        ],
+        "note": "The independent view the founder's objective (p4q8) is judged against."
+      },
+      {
+        "id": "som_ceiling_check",
+        "expr": "som_payers_at_horizon <= sam_people",
+        "note": "A budget-derived SOM larger than the SAM means the market, not the budget, is the binding constraint. Reported, never silently clamped."
+      }
+    ],
+    "segments": {
+      "Everyone in the market": {
+        "kind": "none",
+        "indicator": null
+      },
+      "Children and teenagers (0–14)": {
+        "kind": "percent_of_population",
+        "indicator": "SP.POP.0014.TO.ZS"
+      },
+      "Young people (15–24)": {
+        "kind": "percent_of_population",
+        "indicator": "SP.POP.1524.TO.ZS"
+      },
+      "Working-age adults (15–64)": {
+        "kind": "percent_of_population",
+        "indicator": "SP.POP.1564.TO.ZS"
+      },
+      "Older adults (65+)": {
+        "kind": "percent_of_population",
+        "indicator": "SP.POP.65UP.TO.ZS"
+      },
+      "Women": {
+        "kind": "percent_of_population",
+        "indicator": "SP.POP.TOTL.FE.ZS"
+      },
+      "Men": {
+        "kind": "complement_of_percent",
+        "indicator": "SP.POP.TOTL.FE.ZS"
+      },
+      "People living in cities": {
+        "kind": "percent_of_population",
+        "indicator": "SP.URB.TOTL.IN.ZS"
+      },
+      "People in the labour force": {
+        "kind": "absolute_count",
+        "indicator": "SL.TLF.TOTL.IN"
+      },
+      "People who use the internet": {
+        "kind": "percent_of_population",
+        "indicator": "IT.NET.USER.ZS"
+      },
+      "Registered businesses (B2B)": {
+        "kind": "absolute_count",
+        "indicator": "IC.BUS.NREG",
+        "note": "Coverage is patchy across countries. Renders unvalidated where the country has no value."
+      }
+    },
+    "guardrails": [
+      "No step may be bridged by an assumption. A missing source stops the chain and the documents say where it stopped.",
+      "Two segments multiply only under a stated independence assumption, printed as a caveat.",
+      "A derived SOM exceeding the SAM is reported as a market-bound result, never clamped in silence.",
+      "The derived figures and the founder's objectives are kept in separate fields all the way to the document. They are never averaged or reconciled — they are compared."
+    ]
+  }
+}

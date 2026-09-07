@@ -1,0 +1,188 @@
+{
+  "lastReviewed": "2026-08-10",
+  "crossVerticalFallback": "benchmarks._cross_vertical_default.json",
+  "confidenceTiers": {
+    "primary": "Read from the publisher's own report.",
+    "secondary": "Real published figure via a summary naming the primary vendor (Adjust/AppsFlyer/Liftoff/Sensor Tower).",
+    "tertiary": "Industry-blog aggregation; vendor unnamed or unclear. Usable, weakest tier.",
+    "placeholder": "Not sourced. value is null. App renders 'unvalidated'."
+  },
+  "verticals": [
+    {
+      "verticalId": "gaming_hypercasual",
+      "displayName": "Hyper-Casual Gaming",
+      "sector": "Gaming",
+      "file": "benchmarks.gaming_hypercasual.json",
+      "metricsTotal": 12,
+      "metricsSourced": 7,
+      "metricsPlaceholder": 5,
+      "metricsProxy": 0,
+      "metricsWithConflicts": 0
+    },
+    {
+      "verticalId": "gaming_general",
+      "displayName": "Gaming (broad)",
+      "sector": "Gaming",
+      "file": "benchmarks.gaming_general.json",
+      "metricsTotal": 14,
+      "metricsSourced": 8,
+      "metricsPlaceholder": 6,
+      "metricsProxy": 0,
+      "metricsWithConflicts": 0
+    },
+    {
+      "verticalId": "dating",
+      "displayName": "Dating",
+      "sector": "Social",
+      "file": "benchmarks.dating.json",
+      "metricsTotal": 12,
+      "metricsSourced": 1,
+      "metricsPlaceholder": 11,
+      "metricsProxy": 0,
+      "metricsWithConflicts": 0
+    },
+    {
+      "verticalId": "fintech",
+      "displayName": "Fintech & Banking",
+      "sector": "Finance",
+      "file": "benchmarks.fintech.json",
+      "metricsTotal": 12,
+      "metricsSourced": 5,
+      "metricsPlaceholder": 7,
+      "metricsProxy": 0,
+      "metricsWithConflicts": 1
+    },
+    {
+      "verticalId": "streaming",
+      "displayName": "Subscription Streaming",
+      "sector": "Entertainment",
+      "file": "benchmarks.streaming.json",
+      "metricsTotal": 12,
+      "metricsSourced": 1,
+      "metricsPlaceholder": 11,
+      "metricsProxy": 0,
+      "metricsWithConflicts": 0
+    },
+    {
+      "verticalId": "travel",
+      "displayName": "Travel & Booking",
+      "sector": "Travel & Local",
+      "file": "benchmarks.travel.json",
+      "metricsTotal": 12,
+      "metricsSourced": 1,
+      "metricsPlaceholder": 11,
+      "metricsProxy": 0,
+      "metricsWithConflicts": 0
+    },
+    {
+      "verticalId": "navigation_local",
+      "displayName": "Navigation & Local Discovery",
+      "sector": "Travel & Local",
+      "file": "benchmarks.navigation_local.json",
+      "metricsTotal": 12,
+      "metricsSourced": 2,
+      "metricsPlaceholder": 10,
+      "metricsProxy": 2,
+      "metricsWithConflicts": 0
+    },
+    {
+      "verticalId": "health_fitness",
+      "displayName": "Health & Fitness",
+      "sector": "Health",
+      "file": "benchmarks.health_fitness.json",
+      "metricsTotal": 12,
+      "metricsSourced": 3,
+      "metricsPlaceholder": 9,
+      "metricsProxy": 0,
+      "metricsWithConflicts": 0
+    },
+    {
+      "verticalId": "education",
+      "displayName": "Education & EdTech",
+      "sector": "Education",
+      "file": "benchmarks.education.json",
+      "metricsTotal": 12,
+      "metricsSourced": 2,
+      "metricsPlaceholder": 10,
+      "metricsProxy": 0,
+      "metricsWithConflicts": 0
+    },
+    {
+      "verticalId": "ecommerce_retail",
+      "displayName": "E-commerce & Retail",
+      "sector": "Commerce",
+      "file": "benchmarks.ecommerce_retail.json",
+      "metricsTotal": 12,
+      "metricsSourced": 4,
+      "metricsPlaceholder": 8,
+      "metricsProxy": 0,
+      "metricsWithConflicts": 0
+    },
+    {
+      "verticalId": "food_delivery",
+      "displayName": "Food Delivery & Ordering",
+      "sector": "Commerce",
+      "file": "benchmarks.food_delivery.json",
+      "metricsTotal": 12,
+      "metricsSourced": 1,
+      "metricsPlaceholder": 11,
+      "metricsProxy": 1,
+      "metricsWithConflicts": 0
+    },
+    {
+      "verticalId": "social_media",
+      "displayName": "Social Networking",
+      "sector": "Social",
+      "file": "benchmarks.social_media.json",
+      "metricsTotal": 12,
+      "metricsSourced": 3,
+      "metricsPlaceholder": 9,
+      "metricsProxy": 0,
+      "metricsWithConflicts": 1
+    },
+    {
+      "verticalId": "productivity",
+      "displayName": "Productivity & Utilities",
+      "sector": "Productivity",
+      "file": "benchmarks.productivity.json",
+      "metricsTotal": 12,
+      "metricsSourced": 1,
+      "metricsPlaceholder": 11,
+      "metricsProxy": 0,
+      "metricsWithConflicts": 0
+    },
+    {
+      "verticalId": "b2b_saas",
+      "displayName": "B2B SaaS",
+      "sector": "Business",
+      "file": "benchmarks.b2b_saas.json",
+      "metricsTotal": 12,
+      "metricsSourced": 1,
+      "metricsPlaceholder": 11,
+      "metricsProxy": 1,
+      "metricsWithConflicts": 0
+    },
+    {
+      "verticalId": "real_estate",
+      "displayName": "Real Estate & Property",
+      "sector": "Marketplace",
+      "file": "benchmarks.real_estate.json",
+      "metricsTotal": 12,
+      "metricsSourced": 1,
+      "metricsPlaceholder": 11,
+      "metricsProxy": 1,
+      "metricsWithConflicts": 0
+    },
+    {
+      "verticalId": "media_news",
+      "displayName": "Media & News",
+      "sector": "Entertainment",
+      "file": "benchmarks.media_news.json",
+      "metricsTotal": 12,
+      "metricsSourced": 2,
+      "metricsPlaceholder": 10,
+      "metricsProxy": 0,
+      "metricsWithConflicts": 0
+    }
+  ]
+}

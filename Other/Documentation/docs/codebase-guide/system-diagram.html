@@ -1,0 +1,777 @@
+<!doctype html>
+<html lang="en" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>biz2code — System Diagram</title>
+<style>
+:root{
+  --navy-900:#0C2431; --navy-800:#10394C; --navy-700:#123F55; --navy-500:#154F6B;
+  --cyan-700:#0A6E96; --cyan-500:#13A8E2; --cyan-200:#A9E0F6; --cyan-50:#EAF7FD;
+  --page:#F4F7F9; --card:#FFFFFF; --ink:#12222B; --ink-2:#41545E; --ink-3:#778A94;
+  --line:#DCE4E8; --line-2:#C3CFD6;
+  --warn:#A32D2D; --warn-bg:#FCEBEB; --ok:#1C7A4C; --amber:#8A5A00;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --ui:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --L-entry:#7B4FA8; --L-route:#0A6E96; --L-ctrl:#1C7A4C; --L-svc:#154F6B;
+  --L-num:#B25A00; --L-data:#8A6D00; --L-gen:#A3286B; --L-mw:#4A5C68;
+  --L-db:#2D6E6E; --L-client:#1B6FB5; --L-script:#6B6B6B; --L-test:#9A9A9A;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --page:#0D1A21; --card:#132630; --ink:#E7EFF3; --ink-2:#A9BCC6; --ink-3:#758A96;
+    --line:#223B47; --line-2:#2E4A58; --cyan-50:#0F2C3A; --cyan-200:#1D4E64;
+    --warn:#F08C8C; --warn-bg:#33191A;
+    --L-entry:#C39BEA; --L-route:#5CC5F0; --L-ctrl:#5FD69B; --L-svc:#7FC6E8;
+    --L-num:#F0A85C; --L-data:#DBC45C; --L-gen:#EE8BC0; --L-mw:#9DB2BF;
+    --L-db:#6FD0D0; --L-client:#79B8F0; --L-script:#B0B0B0; --L-test:#8C8C8C;
+  }
+}
+:root[data-theme="dark"]{
+  --page:#0D1A21; --card:#132630; --ink:#E7EFF3; --ink-2:#A9BCC6; --ink-3:#758A96;
+  --line:#223B47; --line-2:#2E4A58; --cyan-50:#0F2C3A; --cyan-200:#1D4E64;
+  --warn:#F08C8C; --warn-bg:#33191A;
+  --L-entry:#C39BEA; --L-route:#5CC5F0; --L-ctrl:#5FD69B; --L-svc:#7FC6E8;
+  --L-num:#F0A85C; --L-data:#DBC45C; --L-gen:#EE8BC0; --L-mw:#9DB2BF;
+  --L-db:#6FD0D0; --L-client:#79B8F0; --L-script:#B0B0B0; --L-test:#8C8C8C;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--page);color:var(--ink);font-family:var(--ui);font-size:14px;line-height:1.55}
+header{padding:18px 22px 12px;border-bottom:1px solid var(--line);background:var(--card)}
+h1{margin:0 0 2px;font-size:19px;font-weight:700;letter-spacing:-.01em}
+.sub{margin:0;color:var(--ink-2);font-size:13px}
+.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:14px}
+.tab{border:1.5px solid var(--line-2);background:transparent;color:var(--ink-2);
+     border-radius:999px;padding:6px 14px;font:600 12.5px var(--ui);cursor:pointer;transition:.15s}
+.tab:hover{border-color:var(--cyan-500);color:var(--ink)}
+.tab[aria-selected="true"]{background:var(--navy-500);border-color:var(--navy-500);color:#fff}
+:root[data-theme="dark"] .tab[aria-selected="true"]{background:var(--cyan-700);border-color:var(--cyan-700)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tab[aria-selected="true"]{background:var(--cyan-700);border-color:var(--cyan-700)}}
+.spacer{flex:1}
+input[type=search]{border:1.5px solid var(--line-2);background:var(--card);color:var(--ink);
+     border-radius:999px;padding:6px 14px;font:400 13px var(--ui);min-width:210px}
+input[type=search]:focus{outline:2px solid var(--cyan-500);outline-offset:1px}
+.iconbtn{border:1.5px solid var(--line-2);background:transparent;color:var(--ink-2);border-radius:999px;
+     padding:6px 12px;font:600 12.5px var(--ui);cursor:pointer}
+main{padding:16px 22px 60px}
+.panel{display:none}
+.panel.on{display:block}
+.legend{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--line);background:var(--card);
+      border-radius:999px;padding:4px 11px;font:600 11.5px var(--ui);color:var(--ink-2);cursor:pointer;user-select:none}
+.chip .dot{width:9px;height:9px;border-radius:50%}
+.chip[data-off="1"]{opacity:.34}
+.split{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:16px;align-items:start}
+@media (max-width:1040px){.split{grid-template-columns:minmax(0,1fr)}}
+.stage{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:auto;position:relative}
+.stage svg{display:block}
+aside{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;position:sticky;top:14px;max-height:calc(100vh - 30px);overflow:auto}
+aside h2{margin:0 0 4px;font-size:14.5px;font-weight:700}
+aside .path{font:600 12px var(--mono);color:var(--cyan-700);word-break:break-all;margin:0 0 12px}
+:root[data-theme="dark"] aside .path{color:var(--cyan-200)}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:3px 12px;font-size:12.5px;margin:0 0 14px}
+.kv dt{color:var(--ink-3);font-weight:600}
+.kv dd{margin:0;font-family:var(--mono);font-size:12px}
+aside h3{margin:12px 0 5px;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+aside ul{margin:0;padding:0;list-style:none;display:grid;gap:2px}
+aside li{font:500 12px var(--mono);color:var(--ink-2);cursor:pointer;padding:2px 6px;border-radius:5px;word-break:break-all}
+aside li:hover{background:var(--cyan-50);color:var(--ink)}
+.pill{display:inline-block;border-radius:999px;padding:2px 9px;font:600 10.5px var(--ui);border:1px solid currentColor;margin:0 4px 4px 0}
+.note{font-size:12.5px;color:var(--ink-2);margin:10px 0 0;padding-top:10px;border-top:1px solid var(--line)}
+.node rect{transition:opacity .15s}
+.node text{font:500 10px var(--mono);pointer-events:none;fill:#fff}
+.node.dim{opacity:.16}
+.node{cursor:pointer}
+.grp{fill:none;stroke:var(--line-2);stroke-width:1.2;rx:10}
+.grplab{font:700 10.5px var(--ui);letter-spacing:.05em;text-transform:uppercase;fill:var(--ink-3)}
+.edge{fill:none;stroke:var(--line-2);stroke-width:1;opacity:0}
+.edge.show{opacity:.85;stroke:var(--cyan-500);stroke-width:1.6}
+.edge.showin{opacity:.85;stroke:var(--L-num);stroke-width:1.6;stroke-dasharray:4 3}
+.d-lab{font:600 12px var(--ui);fill:var(--ink)}
+.d-sub{font:400 10.5px var(--mono);fill:var(--ink-3)}
+.d-box{fill:var(--card);stroke:var(--line-2);stroke-width:1.4;rx:9}
+.d-arrow{fill:none;stroke:var(--ink-3);stroke-width:1.5;marker-end:url(#ah)}
+.d-warn{fill:var(--warn-bg);stroke:var(--warn);stroke-width:1.6;rx:9}
+.d-note{font:400 11px var(--ui);fill:var(--ink-2)}
+.d-title{font:700 13px var(--ui);fill:var(--ink)}
+.d-boundary{fill:none;stroke:var(--warn);stroke-width:2;stroke-dasharray:7 5;rx:12}
+table.g{border-collapse:collapse;width:100%;font-size:12.5px;margin:10px 0 0}
+table.g th,table.g td{border:1px solid var(--line);padding:5px 9px;text-align:left;vertical-align:top}
+table.g th{background:var(--cyan-50);font-weight:700;font-size:11.5px}
+table.g td.n{font-family:var(--mono);white-space:nowrap}
+.hint{color:var(--ink-3);font-size:12.5px;margin:0 0 12px}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>biz2code — system diagram</h1>
+  <p class="sub">87 TypeScript files · 212 internal import edges · extracted from source, not drawn from memory.
+     Companion to the <strong>Master Technical Guide</strong> in this directory.</p>
+  <div class="bar" role="tablist">
+    <button class="tab" role="tab" aria-selected="true" data-p="map">System map</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="req">Request path</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="gen">Generation pipeline</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="der">Derivation chain</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="db">Data model</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="gate">The gate</button>
+    <span class="spacer"></span>
+    <input type="search" id="q" placeholder="Search files…" aria-label="Search files">
+    <button class="iconbtn" id="reset">Reset</button>
+    <button class="iconbtn" id="theme">Theme</button>
+  </div>
+</header>
+
+<main>
+
+<!-- shared arrowhead: must live outside the tab panels, because a marker inside a
+     display:none SVG is not resolvable by the other SVGs in Chrome -->
+<svg width="0" height="0" aria-hidden="true" style="position:absolute"><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs></svg>
+
+<!-- ============================================================ SYSTEM MAP -->
+<section class="panel on" id="p-map">
+  <p class="hint"><strong>Click a file</strong> to see its real imports and importers. Outgoing edges are solid cyan, incoming are dashed orange. Click a legend chip to hide a layer. Search filters as you type.</p>
+  <div class="legend" id="legend"></div>
+  <div class="split">
+    <div class="stage" id="stage"></div>
+    <aside id="info">
+      <h2>Nothing selected</h2>
+      <p class="path">Click a node in the map.</p>
+      <p class="note">The map shows every <code>.ts</code>/<code>.tsx</code> file in <code>server/</code> and
+      <code>client/</code>, grouped by directory and coloured by architectural layer. Node width is proportional
+      to line count. Edges are resolved relative imports only — external packages are listed per file in this panel.</p>
+    </aside>
+  </div>
+</section>
+
+<!-- ========================================================== REQUEST PATH -->
+<section class="panel" id="p-req">
+  <p class="hint">One HTTP request, end to end. Middleware order is load-bearing: <code>cookieParser</code> must precede <code>requireAuth</code>, and <code>errorHandler</code> must be last.</p>
+  <div class="stage"><svg viewBox="0 0 1120 700" width="1120" height="700" role="img" aria-label="Request path diagram">
+    <g color="var(--ink-3)">
+    <text class="d-title" x="24" y="30">browser → vite :5173 → express :3001</text>
+
+    <rect class="d-box" x="24" y="52" width="200" height="46"/>
+    <text class="d-lab" x="40" y="72">Browser (React SPA)</text><text class="d-sub" x="40" y="88">credentials: 'include'</text>
+
+    <path class="d-arrow" d="M224,75 L296,75"/>
+    <rect class="d-box" x="296" y="52" width="220" height="46"/>
+    <text class="d-lab" x="312" y="72">Vite dev server :5173</text><text class="d-sub" x="312" y="88">proxy /api → :3001 · same-site</text>
+
+    <path class="d-arrow" d="M516,75 L588,75"/>
+    <rect class="d-box" x="588" y="52" width="200" height="46"/>
+    <text class="d-lab" x="604" y="72">Express :3001</text><text class="d-sub" x="604" y="88">server/app.ts</text>
+
+    <text class="d-title" x="24" y="140">the middleware chain — app.ts, in order</text>
+    <g>
+      <rect class="d-box" x="24" y="156" width="150" height="40"/><text class="d-lab" x="38" y="181">helmet</text>
+      <path class="d-arrow" d="M174,176 L200,176"/>
+      <rect class="d-box" x="200" y="156" width="150" height="40"/><text class="d-lab" x="214" y="181">cors</text>
+      <path class="d-arrow" d="M350,176 L376,176"/>
+      <rect class="d-box" x="376" y="156" width="170" height="40"/><text class="d-lab" x="390" y="181">express.json</text>
+      <path class="d-arrow" d="M546,176 L572,176"/>
+      <rect class="d-box" x="572" y="156" width="170" height="40"/><text class="d-lab" x="586" y="181">cookieParser</text>
+      <path class="d-arrow" d="M742,176 L768,176"/>
+      <rect class="d-box" x="768" y="156" width="170" height="40"/><text class="d-lab" x="782" y="181">checkOrigin</text>
+    </g>
+    <text class="d-sub" x="586" y="212">must precede requireAuth</text>
+    <text class="d-sub" x="782" y="212">CSRF layer 2 · 403</text>
+
+    <rect class="d-box" x="24" y="240" width="280" height="58"/>
+    <text class="d-lab" x="38" y="262">GET /api/health</text><text class="d-sub" x="38" y="278">public · never touches the DB</text>
+    <text class="d-sub" x="38" y="292">GET /api/ready → SELECT 1 → 503</text>
+
+    <rect class="d-box" x="330" y="240" width="260" height="58"/>
+    <text class="d-lab" x="344" y="262">authLimiter</text>
+    <text class="d-sub" x="344" y="278">20 / 15 min · login + register</text>
+    <text class="d-sub" x="344" y="292">skipSuccessfulRequests</text>
+
+    <text class="d-title" x="24" y="342">five routers</text>
+    <rect class="d-box" x="24" y="358" width="196" height="42"/><text class="d-lab" x="38" y="384">/api/auth</text>
+    <rect class="d-box" x="232" y="358" width="196" height="42"/><text class="d-lab" x="246" y="384">/api/projects</text>
+    <rect class="d-box" x="440" y="358" width="220" height="42"/><text class="d-lab" x="454" y="378">/…/:projectId/answers</text>
+    <rect class="d-box" x="672" y="358" width="220" height="42"/><text class="d-lab" x="686" y="378">/…/:projectId/phases</text>
+    <rect class="d-box" x="904" y="358" width="192" height="42"/><text class="d-lab" x="918" y="378">/…/documents</text>
+    <text class="d-sub" x="606" y="414">mergeParams: true — :projectId is in the mount path</text>
+
+    <path class="d-arrow" d="M560,400 L560,436"/>
+    <rect class="d-box" x="300" y="436" width="520" height="52"/>
+    <text class="d-lab" x="318" y="458">router.use(requireAuth, loadProject)</text>
+    <text class="d-sub" x="318" y="476">declared once per router — a route added later cannot be left unauthenticated</text>
+
+    <path class="d-arrow" d="M560,488 L560,520"/>
+    <rect class="d-box" x="300" y="520" width="520" height="42"/>
+    <text class="d-lab" x="318" y="546">controller — parse → call service → shape response</text>
+
+    <path class="d-arrow" d="M560,562 L560,594"/>
+    <rect class="d-box" x="300" y="594" width="520" height="42"/>
+    <text class="d-lab" x="318" y="620">service → db/query.ts → pg Pool</text>
+
+    <rect class="d-warn" x="850" y="594" width="246" height="42"/>
+    <text class="d-lab" x="866" y="614" style="fill:var(--warn)">errorHandler — LAST</text>
+    <text class="d-sub" x="866" y="630" style="fill:var(--warn)">4xx verbatim · 5xx hidden + logged</text>
+
+    <text class="d-note" x="24" y="668">Ownership: getOwned() filters on user_id in the WHERE clause, so another user's project answers 404 — never 403.</text>
+    </g>
+  </svg></div>
+</section>
+
+<!-- ==================================================== GENERATION PIPELINE -->
+<section class="panel" id="p-gen">
+  <p class="hint">Everything left of the dashed boundary is deterministic. The model receives finished figures and narrates them; it can never send a number back.</p>
+  <div class="stage"><svg viewBox="0 0 1140 800" width="1140" height="800" role="img" aria-label="Generation pipeline">
+    <g color="var(--ink-3)">
+    <text class="d-title" x="24" y="28">POST /api/projects/:id/documents/generate → generation.service.generateAll()</text>
+
+    <rect class="d-box" x="24" y="48" width="230" height="44"/><text class="d-lab" x="38" y="68">assertAllPhasesApproved</text><text class="d-sub" x="38" y="84">409 if fewer than 4 approved</text>
+    <path class="d-arrow" d="M254,70 L292,70"/>
+    <rect class="d-box" x="292" y="48" width="180" height="44"/><text class="d-lab" x="306" y="68">getAnswers</text><text class="d-sub" x="306" y="84">23 rows</text>
+    <path class="d-arrow" d="M472,70 L510,70"/>
+    <rect class="d-box" x="510" y="48" width="250" height="44"/><text class="d-lab" x="524" y="68">gatherExternal</text><text class="d-sub" x="524" y="84">country + 2 World Bank + N iTunes</text>
+    <path class="d-arrow" d="M760,70 L798,70"/>
+    <rect class="d-box" x="798" y="48" width="250" height="44"/><text class="d-lab" x="812" y="68">buildDerivationInputs</text><text class="d-sub" x="812" y="84">segments · Overpass · Wikidata</text>
+
+    <path class="d-arrow" d="M920,92 L920,124"/>
+    <rect class="d-box" x="700" y="124" width="348" height="52"/>
+    <text class="d-lab" x="716" y="146">derive() — PURE</text>
+    <text class="d-sub" x="716" y="164">TAM → SAM → SOM · projection · verdict · levers</text>
+
+    <path class="d-arrow" d="M700,150 L560,150"/>
+    <rect class="d-box" x="292" y="124" width="268" height="52"/>
+    <text class="d-lab" x="308" y="146">calculate()</text>
+    <text class="d-sub" x="308" y="164">13 formulas · 3 comparisons</text>
+    <text class="d-sub" x="308" y="196">receives derivedPayers · derivedLifetimeMonths · derivedCac</text>
+
+    <path class="d-arrow" d="M426,176 L426,214"/>
+    <rect class="d-box" x="24" y="214" width="530" height="66"/>
+    <text class="d-lab" x="40" y="238">keyFigureBlocks(calculations, derivation)</text>
+    <text class="d-sub" x="40" y="256">6 Word tables + 1 PNG chart — built BEFORE the model call</text>
+    <text class="d-sub" x="40" y="272">chart.service: RGBA buffer · 5×7 bitmap font · PNG over node:zlib</text>
+
+    <rect class="d-boundary" x="592" y="206" width="524" height="330"/>
+    <text class="d-title" x="608" y="230" style="fill:var(--warn)">THE TRUST BOUNDARY</text>
+
+    <rect class="d-box" x="612" y="246" width="486" height="70"/>
+    <text class="d-lab" x="628" y="268">renderSharedContext(ctx)</text>
+    <text class="d-sub" x="628" y="286">answers · 14 computed figures with numbered caveats</text>
+    <text class="d-sub" x="628" y="302">9 benchmarks · derivation block · verdict · levers · external</text>
+
+    <path class="d-arrow" d="M855,316 L855,340"/>
+    <rect class="d-box" x="612" y="340" width="486" height="60"/>
+    <text class="d-lab" x="628" y="362">buildGuardrailPreamble(allowedCitations)</text>
+    <text class="d-sub" x="628" y="380">"You may cite ONLY…" · "Do not compute anything."</text>
+
+    <path class="d-arrow" d="M855,400 L855,424"/>
+    <rect class="d-box" x="612" y="424" width="486" height="96"/>
+    <text class="d-lab" x="628" y="446">MRD → PRD → Business Plan   (ADR-010)</text>
+    <text class="d-sub" x="628" y="464">one model writes all three · the whole set redrafts on failure</text>
+    <text class="d-sub" x="628" y="480">gpt-oss-120b → gpt-oss-20b → gemini-3.5-flash-lite</text>
+    <text class="d-sub" x="628" y="496">per call: [model, model (retry)] · 413/429 skip the retry</text>
+    <text class="d-sub" x="628" y="512">BP additionally receives a 260-char digest of the MRD + PRD</text>
+
+    <path class="d-arrow" d="M592,470 L554,470"/>
+    <rect class="d-box" x="24" y="440" width="530" height="60"/>
+    <text class="d-lab" x="40" y="462">renderDraft — model JSON → sections</text>
+    <text class="d-sub" x="40" y="480">section 0 = Key Figures (blocks) · sections 1..25 = model prose</text>
+
+    <path class="d-arrow" d="M289,500 L289,536"/>
+    <rect class="d-box" x="24" y="536" width="530" height="66"/>
+    <text class="d-lab" x="40" y="560">docx.service.renderDocument</text>
+    <text class="d-sub" x="40" y="578">cover · headings · UNVALIDATED blocks · tables · chart · footer</text>
+    <text class="d-sub" x="40" y="594">→ outputs/&lt;projectId&gt;/&lt;Stem&gt;_v&lt;n&gt;.docx</text>
+
+    <path class="d-arrow" d="M289,602 L289,638"/>
+    <rect class="d-box" x="24" y="638" width="530" height="60"/>
+    <text class="d-lab" x="40" y="660">INSERT INTO deliverables × 3, one transaction</text>
+    <text class="d-sub" x="40" y="678">insert-only (ADR-007) · content_json · provenance · unvalidated</text>
+
+    <rect class="d-warn" x="612" y="560" width="486" height="86"/>
+    <text class="d-lab" x="628" y="582" style="fill:var(--warn)">What crosses back</text>
+    <text class="d-sub" x="628" y="600" style="fill:var(--warn)">Strings only. A non-string field value is discarded.</text>
+    <text class="d-sub" x="628" y="616" style="fill:var(--warn)">Numbers cannot cross back — but ONE boolean can:</text>
+    <text class="d-sub" x="628" y="632" style="fill:var(--warn)">content.unvalidated_fields sets the marker. See D17.</text>
+
+    <text class="d-note" x="24" y="726">Failure is local (Gated Specification Method §4.5): a failed section renders a marker and a sentence; a failed API falls to cache;</text>
+    <text class="d-note" x="24" y="744">a failed model set escalates. Nothing aborts the pipeline — a run always writes three files and returns 200.</text>
+    <text class="d-note" x="24" y="768">Measured: 126–192 s. Little of it is the model thinking; most is Groq's 8,000-token-per-minute bucket refilling at ~133/s.</text>
+    </g>
+  </svg></div>
+</section>
+
+<!-- ====================================================== DERIVATION CHAIN -->
+<section class="panel" id="p-der">
+  <p class="hint">ADR-013's two market models. The branch point is one function: <code>marketModelFor(p4q1)</code>. An objective is never an input to a projection — only ever compared against one.</p>
+  <div class="stage"><svg viewBox="0 0 1120 760" width="1120" height="760" role="img" aria-label="Derivation chain">
+    <g color="var(--ink-3)">
+    <text class="d-title" x="24" y="28">derive(input) — pure. No network, no database. 61 tests.</text>
+
+    <rect class="d-box" x="370" y="46" width="384" height="44"/>
+    <text class="d-lab" x="386" y="66">marketModelFor(p4q1)</text>
+    <text class="d-sub" x="386" y="82">=== 'Sold to businesses (B2B licence)' ? b2b : consumer</text>
+
+    <path class="d-arrow" d="M470,92 L250,130"/><path class="d-arrow" d="M654,92 L880,130"/>
+
+    <text class="d-title" x="60" y="122" style="fill:var(--L-client)">CONSUMER INSTALLS</text>
+    <text class="d-title" x="946" y="122" style="fill:var(--L-num)">B2B LICENCE</text>
+
+    <rect class="d-box" x="52" y="134" width="380" height="56"/>
+    <text class="d-lab" x="68" y="156">TAM = population × internet %</text>
+    <text class="d-sub" x="68" y="174">World Bank SP.POP.TOTL · IT.NET.USER.ZS</text>
+
+    <rect class="d-box" x="688" y="134" width="380" height="56"/>
+    <text class="d-lab" x="704" y="156">TAM = count of tagged venues</text>
+    <text class="d-sub" x="704" y="174">Overpass 434 · Wikidata 57 — the generous count is used</text>
+
+    <path class="d-arrow" d="M242,190 L242,218"/><path class="d-arrow" d="M878,190 L878,218"/>
+
+    <rect class="d-box" x="52" y="218" width="380" height="72"/>
+    <text class="d-lab" x="68" y="240">SAM = × segment share × platform share</text>
+    <text class="d-sub" x="68" y="258">segments: percent · complement · absolute_count (replaces)</text>
+    <text class="d-sub" x="68" y="274">platform share is hard-coded null → this step never applies</text>
+
+    <rect class="d-box" x="688" y="218" width="380" height="72"/>
+    <text class="d-lab" x="704" y="240">SAM = TAM</text>
+    <text class="d-sub" x="704" y="258">segments narrow people, not buildings</text>
+    <text class="d-sub" x="704" y="274">no platform share either</text>
+
+    <path class="d-arrow" d="M242,290 L242,318"/><path class="d-arrow" d="M878,290 L878,318"/>
+
+    <rect class="d-box" x="52" y="318" width="380" height="56"/>
+    <text class="d-lab" x="68" y="340">reach = budget ÷ cpi_usd</text>
+    <text class="d-sub" x="68" y="358">installs/month</text>
+
+    <rect class="d-box" x="688" y="318" width="380" height="56"/>
+    <text class="d-lab" x="704" y="340">reach = budget ÷ b2b_cac_usd</text>
+    <text class="d-sub" x="704" y="358">venues/month</text>
+
+    <path class="d-arrow" d="M242,374 L242,402"/><path class="d-arrow" d="M878,374 L878,402"/>
+
+    <rect class="d-warn" x="52" y="402" width="380" height="60"/>
+    <text class="d-lab" x="68" y="424" style="fill:var(--warn)">convert × store_conversion_pct</text>
+    <text class="d-sub" x="68" y="442" style="fill:var(--warn)">0 of 16 verticals sourced — this blocks every consumer run</text>
+
+    <rect class="d-box" x="688" y="402" width="380" height="60"/>
+    <text class="d-lab" x="704" y="424">no conversion step</text>
+    <text class="d-sub" x="704" y="442">a signed venue already pays — noConversionStep() = 100 %</text>
+
+    <path class="d-arrow" d="M242,462 L242,490"/><path class="d-arrow" d="M878,462 L878,490"/>
+
+    <rect class="d-box" x="52" y="490" width="380" height="56"/>
+    <text class="d-lab" x="68" y="512">survival ← churn, else D30 retention (proxy)</text>
+    <text class="d-sub" x="68" y="530">the proxy is admitted in a caveat</text>
+
+    <rect class="d-box" x="688" y="490" width="380" height="56"/>
+    <text class="d-lab" x="704" y="512">survival ← b2b_logo_churn_monthly_pct</text>
+    <text class="d-sub" x="704" y="530">app retention is explicitly refused, with a reason</text>
+
+    <path class="d-arrow" d="M242,546 L480,576"/><path class="d-arrow" d="M878,546 L650,576"/>
+
+    <rect class="d-box" x="300" y="578" width="530" height="68"/>
+    <text class="d-lab" x="316" y="600">SOM — cohorts accumulate and decay</text>
+    <text class="d-sub" x="316" y="618">payers(m) = payers(m−1) × s + perMonth  →  converges to perMonth/(1−s)</text>
+    <text class="d-sub" x="316" y="634">revenue = payers × price × (1 − commission);  commission = 0 for a direct sale</text>
+
+    <rect class="d-warn" x="24" y="672" width="1072" height="66"/>
+    <text class="d-lab" x="42" y="694" style="fill:var(--warn)">The market ceiling needs no benchmark at all:  ceiling = SAM × price × (1 − commission)</text>
+    <text class="d-sub" x="42" y="712" style="fill:var(--warn)">It outranks every other verdict, including a working projection. On the seed project it refuses a $270,000 target</text>
+    <text class="d-sub" x="42" y="728" style="fill:var(--warn)">against a $195,300 ceiling — with no forecast involved. This is what lets the app answer in a category with no data.</text>
+    </g>
+  </svg></div>
+</section>
+
+<!-- ============================================================ DATA MODEL -->
+<section class="panel" id="p-db">
+  <p class="hint">Six tables from <code>001_init.sql</code>, plus <code>schema_migrations</code> created at runtime by the migration runner. Two CHECK constraints carry policy rather than validation.</p>
+  <div class="stage"><svg viewBox="0 0 1120 640" width="1120" height="640" role="img" aria-label="Data model">
+    <g color="var(--ink-3)">
+    <rect class="d-box" x="24" y="30" width="250" height="94"/>
+    <text class="d-lab" x="40" y="52">users</text>
+    <text class="d-sub" x="40" y="70">id · email UNIQUE · password_hash</text>
+    <text class="d-sub" x="40" y="86">created_at</text>
+    <text class="d-sub" x="40" y="108">23505 → 409 "already registered"</text>
+
+    <path class="d-arrow" d="M274,77 L340,77"/>
+    <rect class="d-box" x="340" y="30" width="300" height="132"/>
+    <text class="d-lab" x="356" y="52">projects</text>
+    <text class="d-sub" x="356" y="70">user_id → users ON DELETE CASCADE</text>
+    <text class="d-sub" x="356" y="86">vertical_id  (FK-by-convention, ADR-006)</text>
+    <text class="d-sub" x="356" y="102">business_model</text>
+    <text class="d-sub" x="356" y="118">current_phase  CHECK 1..4</text>
+    <text class="d-sub" x="356" y="134">status  CHECK in_progress|complete|archived</text>
+    <text class="d-sub" x="356" y="150">is_seed</text>
+
+    <path class="d-arrow" d="M490,162 L490,206"/>
+    <rect class="d-warn" x="340" y="206" width="300" height="152"/>
+    <text class="d-lab" x="356" y="228" style="fill:var(--warn)">phases — THIS TABLE IS THE GATE</text>
+    <text class="d-sub" x="356" y="246" style="fill:var(--warn)">phase_no CHECK 1..4</text>
+    <text class="d-sub" x="356" y="262" style="fill:var(--warn)">UNIQUE (project_id, phase_no)</text>
+    <text class="d-sub" x="356" y="278" style="fill:var(--warn)">status CHECK — the five states</text>
+    <text class="d-sub" x="356" y="294" style="fill:var(--warn)">approved_at</text>
+    <text class="d-sub" x="356" y="316" style="fill:var(--warn)">CONSTRAINT approved_needs_timestamp</text>
+    <text class="d-sub" x="356" y="330" style="fill:var(--warn)">CHECK (status &lt;&gt; 'approved'</text>
+    <text class="d-sub" x="356" y="344" style="fill:var(--warn)">       OR approved_at IS NOT NULL)</text>
+
+    <path class="d-arrow" d="M640,96 L706,96"/>
+    <rect class="d-box" x="706" y="30" width="380" height="112"/>
+    <text class="d-lab" x="722" y="52">answers</text>
+    <text class="d-sub" x="722" y="70">question_id  (no FK — ADR-006)</text>
+    <text class="d-sub" x="722" y="86">phase_no CHECK 1..4</text>
+    <text class="d-sub" x="722" y="102">value_text | value_number NUMERIC | value_json JSONB</text>
+    <text class="d-sub" x="722" y="124">UNIQUE (project_id, question_id) → every save is an upsert</text>
+
+    <path class="d-arrow" d="M640,270 L706,270"/>
+    <rect class="d-box" x="706" y="206" width="380" height="128"/>
+    <text class="d-lab" x="722" y="228">deliverables — insert-only (ADR-007)</text>
+    <text class="d-sub" x="722" y="246">doc_type CHECK mrd|prd|business_plan</text>
+    <text class="d-sub" x="722" y="262">version CHECK &gt;= 1 · UNIQUE(project_id, doc_type, version)</text>
+    <text class="d-sub" x="722" y="278">content_json · file_path</text>
+    <text class="d-sub" x="722" y="294">provenance  (identical across the 3 rows of a version)</text>
+    <text class="d-sub" x="722" y="310">unvalidated  (per document)</text>
+    <text class="d-sub" x="722" y="326">no UPDATE and no DELETE exists anywhere in the codebase</text>
+
+    <rect class="d-warn" x="24" y="392" width="1062" height="120"/>
+    <text class="d-lab" x="42" y="414" style="fill:var(--warn)">external_cache — the CHECK constraint IS the approved-source allow-list (ADR-009)</text>
+    <text class="d-sub" x="42" y="434" style="fill:var(--warn)">CHECK (source IN ('worldbank','itunes','restcountries','eurostat','oecd','unsd',</text>
+    <text class="d-sub" x="42" y="450" style="fill:var(--warn)">                 'wikidata','datagovil','crossref','googlebooks','openexchangerates','overpass'))</text>
+    <text class="d-sub" x="42" y="470" style="fill:var(--warn)">UNIQUE (source, cache_key) · idx_external_cache_fetched (source, fetched_at)</text>
+    <text class="d-sub" x="42" y="488" style="fill:var(--warn)">Widening it is a migration. Caveat: it governs CACHING, not citation — viaCache returns the live parse before it caches,</text>
+    <text class="d-sub" x="42" y="504" style="fill:var(--warn)">and every setCached is .catch(() =&gt; {}). And fetched_at is written but never read: there is no TTL.</text>
+
+    <rect class="d-box" x="24" y="524" width="520" height="76"/>
+    <text class="d-lab" x="40" y="546">schema_migrations — created by scripts/migrate.ts, not by any .sql</text>
+    <text class="d-sub" x="40" y="564">filename PRIMARY KEY · applied_at</text>
+    <text class="d-sub" x="40" y="582">one transaction per file · lexical order · re-running skips what is done</text>
+
+    <rect class="d-box" x="566" y="524" width="520" height="76"/>
+    <text class="d-lab" x="582" y="546">Three migrations</text>
+    <text class="d-sub" x="582" y="564">001 init (6 tables, 4 indexes) · 002 widen to 11 sources + index</text>
+    <text class="d-sub" x="582" y="582">003 add 'overpass' — premises counts for B2B sizing</text>
+    </g>
+  </svg></div>
+</section>
+
+<!-- ============================================================== THE GATE -->
+<section class="panel" id="p-gate">
+  <p class="hint">Five states, six transitions, one writer. <code>gate.service.ts</code> is the only module that <em>transitions</em> phase state; <code>project.service.create</code> establishes the initial rows.</p>
+  <div class="stage"><svg viewBox="0 0 1120 660" width="1120" height="660" role="img" aria-label="The gate state machine">
+    <g color="var(--ink-3)">
+    <text class="d-title" x="24" y="28">the phase state machine</text>
+
+    <rect class="d-box" x="24" y="48" width="230" height="52"/>
+    <text class="d-lab" x="40" y="70">project created</text>
+    <text class="d-sub" x="40" y="88">project.service.create — generate_series(1, PHASE_COUNT)</text>
+
+    <path class="d-arrow" d="M139,100 L139,142"/><path class="d-arrow" d="M254,74 L460,74"/>
+
+    <rect class="d-box" x="24" y="142" width="230" height="46"/>
+    <text class="d-lab" x="40" y="168">in_progress   (phase 1)</text>
+
+    <rect class="d-box" x="460" y="48" width="230" height="46"/>
+    <text class="d-lab" x="476" y="74">pending   (phases 2-4)</text>
+
+    <path class="d-arrow" d="M575,94 L575,142"/>
+    <text class="d-sub" x="590" y="122">approvePhase(n−1) opens it, WHERE status='pending'</text>
+
+    <path class="d-arrow" d="M254,165 L400,165"/>
+    <rect class="d-box" x="400" y="142" width="400" height="60"/>
+    <text class="d-lab" x="416" y="164">awaiting_approval</text>
+    <text class="d-sub" x="416" y="182">refreshPhaseStatus, when canApprove() is true</text>
+    <text class="d-sub" x="416" y="196">counted from the bank + the answers table, never inferred</text>
+
+    <path class="d-arrow" d="M600,202 L600,254"/>
+    <rect class="d-warn" x="330" y="254" width="490" height="118"/>
+    <text class="d-lab" x="348" y="276" style="fill:var(--warn)">approvePhase(n) — four guards, then ONE transaction</text>
+    <text class="d-sub" x="348" y="296" style="fill:var(--warn)">1. project exists                                          → 404</text>
+    <text class="d-sub" x="348" y="312" style="fill:var(--warn)">2. phaseNo &lt;= current_phase                                 → 409</text>
+    <text class="d-sub" x="348" y="328" style="fill:var(--warn)">3. no earlier phase with status &lt;&gt; 'approved'               → 409</text>
+    <text class="d-sub" x="348" y="344" style="fill:var(--warn)">4. canApprove(projectId, phaseNo)                           → 409</text>
+    <text class="d-sub" x="348" y="364" style="fill:var(--warn)">each message names WHY — the UI can say more than "cannot approve"</text>
+
+    <path class="d-arrow" d="M575,372 L575,412"/>
+    <rect class="d-box" x="330" y="412" width="490" height="112"/>
+    <text class="d-lab" x="348" y="434">approved · approved_at = now()</text>
+    <text class="d-sub" x="348" y="452">UPDATE projects SET current_phase = GREATEST(current_phase, n+1)</text>
+    <text class="d-sub" x="348" y="468">UPDATE phases SET 'in_progress' … AND status = 'pending'</text>
+    <text class="d-sub" x="348" y="484">status = CASE WHEN count(approved) = 4 THEN 'complete'</text>
+    <text class="d-sub" x="348" y="500">… ELSE 'in_progress' END … WHERE id = $1 AND status &lt;&gt; 'archived'</text>
+    <text class="d-sub" x="348" y="516">GREATEST is what makes revise non-rewinding</text>
+
+    <path class="d-arrow" d="M330,468 L214,468"/>
+    <rect class="d-box" x="24" y="445" width="190" height="46"/>
+    <text class="d-lab" x="40" y="471">revising</text>
+    <text class="d-sub" x="40" y="487">approved_at = NULL</text>
+
+    <path class="d-arrow" d="M119,445 L119,214"/>
+    <text class="d-sub" x="134" y="330">saveAnswer → refreshPhaseStatus</text>
+    <text class="d-sub" x="134" y="346">→ awaiting_approval → approved …</text>
+
+    <rect class="d-box" x="830" y="254" width="266" height="252"/>
+    <text class="d-lab" x="846" y="276">The five invariants</text>
+    <text class="d-sub" x="846" y="298">1. approved only when every required</text>
+    <text class="d-sub" x="846" y="312">   question in the phase has an answer</text>
+    <text class="d-sub" x="846" y="334">2. current_phase = the furthest phase</text>
+    <text class="d-sub" x="846" y="348">   unlocked, not the phase on screen</text>
+    <text class="d-sub" x="846" y="370">3. approve requires n &lt;= current_phase</text>
+    <text class="d-sub" x="846" y="384">   AND every earlier phase approved</text>
+    <text class="d-sub" x="846" y="406">4. revise reopens one phase and</text>
+    <text class="d-sub" x="846" y="420">   NEVER rewinds current_phase</text>
+    <text class="d-sub" x="846" y="442">5. gate.service is the only module</text>
+    <text class="d-sub" x="846" y="456">   that transitions phase state</text>
+    <text class="d-sub" x="846" y="480">20 unit tests · RACE-DOUBLE-APPROVE</text>
+    <text class="d-sub" x="846" y="494">fires 10 concurrent approves live</text>
+
+    <text class="d-note" x="24" y="556">Invariant 4 is the one that is easy to get wrong and expensive to discover. Without it, a project that reached phase 4 and</text>
+    <text class="d-note" x="24" y="574">reopened phase 2 could never be complete again — which happens to be the last step of the demo.</text>
+    <text class="d-note" x="24" y="600">'revising' cannot be produced by refreshPhaseStatus, so it survives only until the first answer save after revisePhase.</text>
+    <text class="d-note" x="24" y="624">revisePhase issues two UPDATEs with no BEGIN — the one multi-statement change in the gate that is not transactional.</text>
+    </g>
+  </svg></div>
+</section>
+
+</main>
+
+<script id="graph" type="application/json">{"n":[["server/app.ts",81,1,0,0,["cookie-parser","cors","express","express-rate-limit","helmet"]],["server/config/env.ts",33,1,1,0,["dotenv","node:path","node:url"]],["server/controllers/answer.controller.ts",44,2,0,0,[]],["server/controllers/auth.controller.ts",40,4,0,0,[]],["server/controllers/document.controller.ts",47,3,0,0,["node:fs","node:path"]],["server/controllers/phase.controller.ts",64,4,0,0,[]],["server/controllers/project.controller.ts",52,4,0,0,[]],["server/db/pool.ts",7,1,0,0,["pg"]],["server/db/query.ts",34,3,0,0,[]],["server/index.ts",23,0,0,0,[]],["server/middleware/async.ts",12,1,0,0,["express"]],["server/middleware/auth.ts",20,1,0,0,["express","jsonwebtoken"]],["server/middleware/error.test.ts",102,0,0,1,["express","vitest"]],["server/middleware/error.ts",42,2,0,0,["express"]],["server/middleware/origin.ts",17,1,0,0,["express"]],["server/middleware/project.ts",27,2,0,0,["express"]],["server/middleware/validate.ts",12,1,0,0,["express"]],["server/prompts/budget.test.ts",114,0,1,1,["vitest"]],["server/prompts/context.ts",245,9,3,0,[]],["server/prompts/documents.ts",337,8,4,0,[]],["server/prompts/figures.ts",166,1,1,0,[]],["server/routes/answer.routes.ts",14,1,0,0,["express"]],["server/routes/auth.routes.ts",15,1,0,0,["express"]],["server/routes/document.routes.ts",16,1,0,0,["express"]],["server/routes/phase.routes.ts",17,1,0,0,["express"]],["server/routes/project.routes.ts",19,1,0,0,["express"]],["server/scripts/fetch-seed-data.ts",112,0,0,0,["node:fs","node:path","node:url"]],["server/scripts/migrate.ts",59,0,0,0,["node:fs","node:path","node:url"]],["server/scripts/probe-sources.ts",93,0,1,0,[]],["server/scripts/qa-api-probe.ts",316,0,13,0,["node:fs","node:net","node:path","node:url"]],["server/scripts/qa-generation-probe.ts",243,0,10,0,["jszip","node:fs","node:path","node:url"]],["server/scripts/qa-resilience-probe.ts",216,0,5,0,["node:fs","node:net","node:path","node:url"]],["server/scripts/rehearse.ts",191,0,5,0,["node:fs","node:path","node:url"]],["server/scripts/seed.ts",85,0,0,0,["node:fs","node:path","node:url"]],["server/services/answer.service.test.ts",147,0,1,1,["vitest"]],["server/services/answer.service.ts",171,8,1,0,[]],["server/services/auth.service.ts",97,8,0,0,["bcryptjs","express","jsonwebtoken"]],["server/services/benchmark.service.test.ts",196,0,1,1,["vitest"]],["server/services/benchmark.service.ts",234,13,0,0,["node:fs","node:path","node:url"]],["server/services/calculation.service.test.ts",358,0,7,1,["vitest"]],["server/services/calculation.service.ts",413,31,6,0,[]],["server/services/chart.service.ts",248,3,5,0,["node:zlib"]],["server/services/competitorTerms.test.ts",61,0,0,1,["vitest"]],["server/services/competitorTerms.ts",43,2,0,0,[]],["server/services/derivation.service.test.ts",489,0,10,1,["vitest"]],["server/services/derivation.service.ts",667,22,8,0,[]],["server/services/derivationInputs.service.ts",133,3,1,0,[]],["server/services/docx.service.ts",261,7,4,0,["docx","node:fs","node:path","node:url"]],["server/services/external.service.ts",143,8,4,0,[]],["server/services/gate.service.test.ts",199,0,0,1,["vitest"]],["server/services/gate.service.ts",118,5,0,0,[]],["server/services/generation.service.ts",395,10,6,0,[]],["server/services/llm.service.test.ts",309,0,8,1,["vitest"]],["server/services/llm.service.ts",405,11,5,0,[]],["server/services/project.service.ts",120,8,1,0,["node:fs","node:path","node:url"]],["server/services/questionBank.service.ts",101,9,1,0,["node:fs","node:path","node:url"]],["server/services/sources.service.test.ts",300,0,10,1,["vitest"]],["server/services/sources.service.ts",508,37,16,0,[]],["server/test/fakeDb.ts",133,10,3,0,[]],["server/types/express.d.ts",15,1,0,0,[]],["server/vitest.config.ts",13,1,0,0,["vitest"]],["client/playwright.config.ts",48,1,0,0,["@playwright/test","node:path","node:url"]],["client/src/App.tsx",49,1,0,0,["react","react-router-dom"]],["client/src/components/ApprovalGate.tsx",103,1,1,0,["lucide-react","react"]],["client/src/components/AppShell.tsx",182,1,1,0,["lucide-react","react","react-router-dom"]],["client/src/components/PhaseStepper.tsx",108,1,1,0,["react-router-dom"]],["client/src/components/QuestionField.tsx",251,1,3,0,["react"]],["client/src/components/ui/Badge.tsx",51,1,1,0,["react"]],["client/src/components/ui/Button.tsx",135,1,1,0,["react"]],["client/src/components/ui/Card.tsx",96,1,1,0,["react"]],["client/src/components/UnvalidatedBadge.tsx",42,3,1,0,[]],["client/src/context/AuthContext.tsx",57,2,0,0,["react"]],["client/src/hooks/useAnswers.ts",20,1,0,0,["@tanstack/react-query"]],["client/src/hooks/useDocuments.ts",37,3,2,0,["@tanstack/react-query"]],["client/src/hooks/usePhase.ts",43,3,0,0,["@tanstack/react-query"]],["client/src/hooks/useProject.ts",51,5,0,0,["@tanstack/react-query"]],["client/src/lib/api.ts",45,5,0,0,[]],["client/src/lib/types.ts",145,21,3,0,[]],["client/src/main.tsx",37,0,0,0,["@tanstack/react-query","react","react-dom","react-router-dom"]],["client/src/pages/DocumentsPage.tsx",205,1,1,0,["lucide-react","react","react-router-dom"]],["client/src/pages/LoginPage.tsx",173,1,1,0,["react","react-router-dom"]],["client/src/pages/PhasePage.tsx",187,1,1,0,["lucide-react","react","react-router-dom"]],["client/src/pages/ProjectsPage.tsx",171,1,1,0,["lucide-react","react","react-router-dom"]],["client/src/vite-env.d.ts",4,0,1,0,[]],["client/tests/extended-qa.spec.ts",277,0,6,1,["@playwright/test","node:fs","node:path","node:url"]],["client/tests/journey.spec.ts",222,0,4,1,["@playwright/test","node:fs","node:path","node:url"]],["client/vite.config.ts",17,1,1,0,["@vitejs/plugin-react","node:path","vite"]]],"e":[[0,13],[0,14],[0,22],[0,25],[0,21],[0,24],[0,23],[0,1],[0,8],[2,10],[2,13],[2,35],[2,54],[3,36],[3,10],[3,13],[4,10],[4,13],[4,51],[4,47],[5,10],[5,13],[5,15],[5,50],[5,35],[5,54],[5,55],[6,10],[6,13],[6,54],[6,55],[7,1],[8,7],[9,0],[9,1],[11,1],[12,13],[14,1],[15,13],[15,54],[15,55],[17,19],[17,18],[17,40],[17,45],[18,40],[18,38],[18,55],[18,35],[18,48],[18,45],[19,53],[19,18],[20,40],[20,45],[20,47],[20,41],[21,2],[21,11],[21,15],[22,3],[22,11],[22,16],[23,4],[23,11],[23,15],[24,5],[24,11],[24,15],[25,6],[25,11],[25,15],[25,16],[26,43],[27,7],[28,57],[28,7],[29,0],[29,7],[30,7],[30,36],[30,54],[30,35],[30,50],[30,51],[30,55],[30,47],[31,0],[31,7],[31,8],[32,7],[32,8],[32,36],[32,54],[32,35],[32,50],[32,51],[32,40],[32,55],[32,47],[33,7],[33,8],[34,35],[34,55],[34,58],[35,8],[35,13],[35,55],[35,50],[36,8],[36,1],[36,13],[37,38],[39,40],[39,38],[40,38],[42,43],[44,45],[44,40],[45,40],[45,38],[46,48],[46,57],[46,55],[46,35],[46,45],[47,19],[48,8],[49,58],[49,55],[49,50],[50,8],[50,55],[50,13],[51,8],[51,13],[51,35],[51,40],[51,45],[51,46],[51,53],[51,47],[51,48],[51,43],[51,55],[51,19],[51,18],[51,20],[52,53],[53,1],[54,8],[54,13],[54,55],[54,50],[55,13],[56,57],[57,48],[59,54],[62,71],[62,64],[62,80],[62,82],[62,81],[62,79],[63,77],[63,68],[63,69],[64,71],[65,77],[66,77],[70,67],[71,76],[71,77],[72,76],[72,75],[72,77],[73,76],[73,75],[73,77],[74,76],[74,75],[74,77],[75,76],[75,77],[78,62],[78,71],[78,76],[79,75],[79,73],[79,70],[79,76],[79,77],[79,68],[79,69],[79,67],[80,71],[80,76],[80,68],[81,65],[81,66],[81,63],[81,75],[81,74],[81,72],[81,76],[81,77],[82,75],[82,76],[82,77],[82,68],[82,69],[82,67]]}</script>
+<script>
+(function(){
+'use strict';
+var G = JSON.parse(document.getElementById('graph').textContent);
+var NODES = G.n.map(function(a,i){
+  return { i:i, id:a[0], lines:a[1], exports:a[2], comments:a[3], test:!!a[4], ext:a[5] };
+});
+var EDGES = G.e;
+
+/* ---------------------------------------------------------------- layers */
+function layerOf(id){
+  if (id.indexOf('client/tests/')===0) return 'test';
+  if (/\.test\.ts$/.test(id)) return 'test';
+  if (id.indexOf('server/scripts/')===0) return 'script';
+  if (id.indexOf('server/test/')===0) return 'test';
+  if (id==='server/index.ts'||id==='server/app.ts'||id==='client/src/main.tsx'||id==='client/src/App.tsx') return 'entry';
+  if (id.indexOf('server/routes/')===0) return 'route';
+  if (id.indexOf('server/controllers/')===0) return 'ctrl';
+  if (id.indexOf('server/middleware/')===0) return 'mw';
+  if (id.indexOf('server/db/')===0) return 'db';
+  if (id.indexOf('server/config/')===0||id.indexOf('server/types/')===0) return 'db';
+  if (id.indexOf('server/prompts/')===0) return 'gen';
+  if (/services\/(calculation|derivation|derivationInputs)/.test(id)) return 'num';
+  if (/services\/(benchmark|external|sources)/.test(id)) return 'data';
+  if (/services\/(generation|llm|docx|chart)/.test(id)) return 'gen';
+  if (id.indexOf('server/services/')===0) return 'svc';
+  if (id.indexOf('client/')===0) return 'client';
+  return 'svc';
+}
+var LAYERS = [
+  ['entry','Entry & app','--L-entry'],
+  ['route','Routes','--L-route'],
+  ['ctrl','Controllers','--L-ctrl'],
+  ['mw','Middleware','--L-mw'],
+  ['svc','Services — domain','--L-svc'],
+  ['num','Services — numbers','--L-num'],
+  ['data','Services — data & sources','--L-data'],
+  ['gen','Generation & prompts','--L-gen'],
+  ['db','Data access & config','--L-db'],
+  ['client','Client','--L-client'],
+  ['script','Scripts','--L-script'],
+  ['test','Tests','--L-test']
+];
+var LAYER_LABEL = {}, LAYER_VAR = {};
+LAYERS.forEach(function(l){ LAYER_LABEL[l[0]]=l[1]; LAYER_VAR[l[0]]=l[2]; });
+NODES.forEach(function(n){ n.layer = layerOf(n.id); n.dir = n.id.split('/').slice(0,-1).join('/'); n.base = n.id.split('/').pop(); });
+
+/* adjacency */
+var out = {}, inn = {};
+NODES.forEach(function(n){ out[n.i]=[]; inn[n.i]=[]; });
+EDGES.forEach(function(e){ out[e[0]].push(e[1]); inn[e[1]].push(e[0]); });
+
+/* ------------------------------------------------------------ map layout */
+var DIRS = [];
+NODES.forEach(function(n){ if (DIRS.indexOf(n.dir)<0) DIRS.push(n.dir); });
+var DIR_ORDER = ['server','server/config','server/types','server/db','server/middleware','server/routes',
+  'server/controllers','server/services','server/prompts','server/test','server/scripts',
+  'client','client/src','client/src/lib','client/src/context','client/src/hooks',
+  'client/src/components/ui','client/src/components','client/src/pages','client/tests'];
+DIRS.sort(function(a,b){
+  var ia=DIR_ORDER.indexOf(a), ib=DIR_ORDER.indexOf(b);
+  return (ia<0?99:ia)-(ib<0?99:ib);
+});
+
+var PAD=16, GH=26, NH=19, NGAP=5, COLW=272, GGAP=16;
+var groups=[], pos={};
+(function layout(){
+  var x=PAD, y=PAD, colMax=0, colY=PAD, col=0;
+  DIRS.forEach(function(dir){
+    var members = NODES.filter(function(n){ return n.dir===dir; });
+    var h = GH + members.length*(NH+NGAP) + 10;
+    if (colY + h > 820 && colY>PAD){ col++; colY=PAD; }
+    var gx = PAD + col*(COLW+GGAP), gy = colY;
+    groups.push({dir:dir,x:gx,y:gy,w:COLW,h:h,n:members.length});
+    members.forEach(function(m,k){
+      m.label = m.base.length>27 ? m.base.slice(0,25)+'…' : m.base;
+      /* the rect must always be wide enough for its label — line count only ever widens it */
+      var textW = 14 + Math.ceil(m.label.length * 6.05);
+      var w = Math.min(COLW-24, Math.max(textW, 96 + Math.round(m.lines/9)));
+      pos[m.i] = { x:gx+12, y:gy+GH+k*(NH+NGAP), w:w, h:NH, cx:gx+12+w, cy:gy+GH+k*(NH+NGAP)+NH/2, lx:gx+12 };
+    });
+    colY += h + GGAP;
+    colMax = Math.max(colMax, gx+COLW);
+    y = Math.max(y, colY);
+  });
+  window.__W = colMax + PAD;
+  window.__H = 1400;
+})();
+var W = window.__W, H = 0;
+groups.forEach(function(g){ H = Math.max(H, g.y+g.h+PAD); });
+
+/* --------------------------------------------------------------- render */
+var NS='http://www.w3.org/2000/svg';
+function el(t,a){ var e=document.createElementNS(NS,t); for(var k in a) e.setAttribute(k,a[k]); return e; }
+var svg = el('svg',{viewBox:'0 0 '+W+' '+H, width:W, height:H, role:'img','aria-label':'System map'});
+var gEdges = el('g',{}), gGroups = el('g',{}), gNodes = el('g',{});
+svg.appendChild(gGroups); svg.appendChild(gEdges); svg.appendChild(gNodes);
+
+groups.forEach(function(g){
+  gGroups.appendChild(el('rect',{class:'grp',x:g.x,y:g.y,width:g.w,height:g.h}));
+  var t=el('text',{class:'grplab',x:g.x+11,y:g.y+17}); t.textContent=g.dir+'  ('+g.n+')'; gGroups.appendChild(t);
+});
+
+var edgePaths=[];
+EDGES.forEach(function(e,k){
+  var a=pos[e[0]], b=pos[e[1]];
+  if(!a||!b) return;
+  var x1=a.cx, y1=a.cy, x2=b.lx, y2=b.cy;
+  var dx=Math.max(40,Math.abs(x2-x1)*0.45);
+  var d='M'+x1+','+y1+' C'+(x1+dx)+','+y1+' '+(x2-dx)+','+y2+' '+x2+','+y2;
+  var p=el('path',{class:'edge',d:d});
+  edgePaths.push({el:p,from:e[0],to:e[1]});
+  gEdges.appendChild(p);
+});
+
+var nodeEls={};
+NODES.forEach(function(n){
+  var p=pos[n.i];
+  var g=el('g',{class:'node','data-i':n.i,tabindex:'0',role:'button','aria-label':n.id});
+  var fill='var('+LAYER_VAR[n.layer]+')';
+  g.appendChild(el('rect',{x:p.x,y:p.y,width:p.w,height:p.h,rx:5,fill:fill,opacity:n.test?0.55:1}));
+  var t=el('text',{x:p.x+7,y:p.y+13});
+  t.textContent=n.label; g.appendChild(t);
+  var title=el('title'); title.textContent=n.id+' — '+n.lines+' lines, '+n.exports+' exports';
+  g.appendChild(title);
+  gNodes.appendChild(g);
+  nodeEls[n.i]=g;
+});
+document.getElementById('stage').appendChild(svg);
+
+/* --------------------------------------------------------------- legend */
+var legend=document.getElementById('legend');
+var hidden={};
+LAYERS.forEach(function(l){
+  var c=document.createElement('span'); c.className='chip'; c.setAttribute('data-l',l[0]);
+  var d=document.createElement('span'); d.className='dot'; d.style.background='var('+l[2]+')';
+  c.appendChild(d); c.appendChild(document.createTextNode(l[1]+' · '+NODES.filter(function(n){return n.layer===l[0];}).length));
+  c.addEventListener('click',function(){
+    hidden[l[0]]=!hidden[l[0]];
+    c.setAttribute('data-off', hidden[l[0]]?'1':'0');
+    apply();
+  });
+  legend.appendChild(c);
+});
+
+/* -------------------------------------------------------------- selection */
+var sel=null, query='';
+function apply(){
+  var q=query.toLowerCase();
+  NODES.forEach(function(n){
+    var vis = !hidden[n.layer] && (!q || n.id.toLowerCase().indexOf(q)>=0);
+    var rel = sel===null ? true : (n.i===sel || out[sel].indexOf(n.i)>=0 || inn[sel].indexOf(n.i)>=0);
+    nodeEls[n.i].classList.toggle('dim', !(vis && rel));
+  });
+  edgePaths.forEach(function(p){
+    p.el.classList.remove('show'); p.el.classList.remove('showin');
+    if(sel===null) return;
+    if(p.from===sel && !hidden[NODES[p.to].layer]) p.el.classList.add('show');
+    else if(p.to===sel && !hidden[NODES[p.from].layer]) p.el.classList.add('showin');
+  });
+}
+function link(id){
+  var b=document.createElement('li'); b.textContent=id;
+  b.addEventListener('click',function(){ select(NODES.filter(function(n){return n.id===id;})[0].i); });
+  return b;
+}
+function select(i){
+  sel=i; apply();
+  var n=NODES[i], info=document.getElementById('info');
+  info.innerHTML='';
+  var h=document.createElement('h2'); h.textContent=n.base; info.appendChild(h);
+  var p=document.createElement('p'); p.className='path'; p.textContent=n.id; info.appendChild(p);
+  var pill=document.createElement('div');
+  var s=document.createElement('span'); s.className='pill'; s.style.color='var('+LAYER_VAR[n.layer]+')';
+  s.textContent=LAYER_LABEL[n.layer]; pill.appendChild(s);
+  if(n.test){ var s2=document.createElement('span'); s2.className='pill'; s2.style.color='var(--ink-3)'; s2.textContent='test'; pill.appendChild(s2); }
+  info.appendChild(pill);
+  var dl=document.createElement('dl'); dl.className='kv';
+  [['lines',n.lines],['exports',n.exports],['comment lines',n.comments],
+   ['imports',out[i].length],['imported by',inn[i].length]].forEach(function(r){
+    var dt=document.createElement('dt'); dt.textContent=r[0];
+    var dd=document.createElement('dd'); dd.textContent=r[1];
+    dl.appendChild(dt); dl.appendChild(dd);
+  });
+  info.appendChild(dl);
+  function section(title,list){
+    var h3=document.createElement('h3'); h3.textContent=title; info.appendChild(h3);
+    if(!list.length){ var e=document.createElement('p'); e.className='note'; e.style.borderTop='0'; e.style.paddingTop='0'; e.style.margin='0'; e.textContent='none'; info.appendChild(e); return; }
+    var ul=document.createElement('ul');
+    list.forEach(function(x){ ul.appendChild(link(x)); });
+    info.appendChild(ul);
+  }
+  section('imports ('+out[i].length+')', out[i].map(function(j){return NODES[j].id;}).sort());
+  section('imported by ('+inn[i].length+')', inn[i].map(function(j){return NODES[j].id;}).sort());
+  var h3=document.createElement('h3'); h3.textContent='external packages'; info.appendChild(h3);
+  var ext=document.createElement('div');
+  if(!n.ext.length){ ext.className='note'; ext.style.borderTop='0'; ext.style.paddingTop='0'; ext.style.margin='0'; ext.textContent='none'; }
+  else n.ext.forEach(function(x){ var s=document.createElement('span'); s.className='pill'; s.style.color='var(--ink-3)'; s.textContent=x; ext.appendChild(s); });
+  info.appendChild(ext);
+}
+gNodes.addEventListener('click',function(ev){
+  var g=ev.target.closest('.node'); if(!g) return;
+  select(parseInt(g.getAttribute('data-i'),10));
+});
+gNodes.addEventListener('keydown',function(ev){
+  if(ev.key!=='Enter'&&ev.key!==' ') return;
+  var g=ev.target.closest('.node'); if(!g) return;
+  ev.preventDefault(); select(parseInt(g.getAttribute('data-i'),10));
+});
+
+/* ------------------------------------------------------------------ chrome */
+document.getElementById('q').addEventListener('input',function(e){
+  query=e.target.value;
+  if(query) sel=null;          // otherwise search AND selection can filter to nothing
+  apply();
+});
+document.getElementById('reset').addEventListener('click',function(){
+  sel=null; query=''; document.getElementById('q').value='';
+  hidden={}; Array.prototype.forEach.call(legend.children,function(c){ c.setAttribute('data-off','0'); });
+  apply();
+  var info=document.getElementById('info');
+  info.innerHTML='<h2>Nothing selected</h2><p class="path">Click a node in the map.</p>'+
+    '<p class="note">The map shows every <code>.ts</code>/<code>.tsx</code> file in <code>server/</code> and '+
+    '<code>client/</code>, grouped by directory and coloured by architectural layer. Node width is proportional '+
+    'to line count. Edges are resolved relative imports only.</p>';
+});
+document.getElementById('theme').addEventListener('click',function(){
+  var r=document.documentElement, c=r.getAttribute('data-theme');
+  r.setAttribute('data-theme', c==='dark' ? 'light' : c==='light' ? 'auto' : 'dark');
+});
+Array.prototype.forEach.call(document.querySelectorAll('.tab'),function(t){
+  t.addEventListener('click',function(){
+    Array.prototype.forEach.call(document.querySelectorAll('.tab'),function(x){ x.setAttribute('aria-selected','false'); });
+    Array.prototype.forEach.call(document.querySelectorAll('.panel'),function(x){ x.classList.remove('on'); });
+    t.setAttribute('aria-selected','true');
+    document.getElementById('p-'+t.getAttribute('data-p')).classList.add('on');
+  });
+});
+apply();
+})();
+</script>
+</body>
+</html>

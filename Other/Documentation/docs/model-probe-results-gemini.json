@@ -1,0 +1,17 @@
+{
+  "provider": "Gemini",
+  "budgetMs": 30000,
+  "runs": 2,
+  "results": [
+    {
+      "model": "gemini-3.1-pro-preview",
+      "ctx": null,
+      "verdict": "FAIL",
+      "cleanRuns": "0/1",
+      "medianMs": null,
+      "worstMs": 283,
+      "tokens": null,
+      "why": "429 rate-limited — free-tier RPM exceeded"
+    }
+  ]
+}

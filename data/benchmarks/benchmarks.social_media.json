@@ -1,0 +1,228 @@
+{
+  "$schema": "./_schema.json",
+  "verticalId": "social_media",
+  "displayName": "Social Networking",
+  "sector": "Social",
+  "typicalBusinessModels": [
+    "ad_supported",
+    "freemium"
+  ],
+  "lastReviewed": "2026-08-10",
+  "coverage": {
+    "metricsTotal": 12,
+    "metricsSourced": 3,
+    "metricsPlaceholder": 9,
+    "metricsProxy": 0,
+    "metricsWithConflicts": 1
+  },
+  "metrics": {
+    "arpu_12mo_blended_usd": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "USD",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "retention_d1_pct": {
+      "value": 27.0,
+      "rangeLow": 25.0,
+      "rangeHigh": 29.0,
+      "unit": "percent",
+      "confidence": "tertiary",
+      "source": {
+        "publisher": "Sendbird / Plotline industry benchmarks",
+        "via": "lovable.dev guide",
+        "url": "https://lovable.dev/guides/what-is-a-good-retention-rate-for-an-app",
+        "tier": "tertiary",
+        "retrieved": "2026-08-10"
+      },
+      "note": null,
+      "conflicts": null
+    },
+    "retention_d7_pct": {
+      "value": 9.5,
+      "rangeLow": 9.0,
+      "rangeHigh": 10.0,
+      "unit": "percent",
+      "confidence": "tertiary",
+      "source": {
+        "publisher": "Sendbird / Plotline industry benchmarks",
+        "via": "lovable.dev guide",
+        "url": "https://lovable.dev/guides/what-is-a-good-retention-rate-for-an-app",
+        "tier": "tertiary",
+        "retrieved": "2026-08-10"
+      },
+      "note": null,
+      "conflicts": null
+    },
+    "retention_d30_pct": {
+      "value": 12.5,
+      "rangeLow": 5.0,
+      "rangeHigh": 20.0,
+      "unit": "percent",
+      "confidence": "secondary",
+      "source": {
+        "publisher": "UXCam (compiled from AppsFlyer State of App Marketing 2025 + 37k app panel)",
+        "via": "uxcam.com",
+        "url": "https://uxcam.com/blog/mobile-app-retention-benchmarks/",
+        "tier": "secondary",
+        "retrieved": "2026-08-10"
+      },
+      "note": "SOURCES CONFLICT WIDELY (5% to 22%). Band spans all reported values.",
+      "conflicts": [
+        {
+          "value": 22.0,
+          "source": "vmobify (social/messaging)",
+          "note": "D1 55 / D7 35 / D30 22 - far above other sets."
+        },
+        {
+          "value": 5.0,
+          "source": "Adjust + Sendbird via lovable.dev",
+          "note": "D1 25-29 / D7 9-10 / D30 ~5."
+        },
+        {
+          "value": 17.5,
+          "source": "UXCam / vmobify D30 band",
+          "note": "15-20% for strong performers."
+        }
+      ]
+    },
+    "retention_d365_pct": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "cpi_usd": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "USD",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "cpi_ios_usd": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "USD",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "cpi_android_usd": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "USD",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "trial_to_paid_pct": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "ltv_usd": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "USD",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "churn_monthly_pct": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "store_conversion_pct": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    }
+  }
+}

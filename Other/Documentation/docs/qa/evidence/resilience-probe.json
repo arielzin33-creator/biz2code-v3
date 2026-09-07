@@ -1,0 +1,361 @@
+{
+  "generatedAt": "2026-08-24T21:20:55.108Z",
+  "latency": {
+    "GET /health": {
+      "p50": 0.7,
+      "p95": 1.9,
+      "p99": 4,
+      "max": 4
+    },
+    "GET /auth/me": {
+      "p50": 1.4,
+      "p95": 2.8,
+      "p99": 3.1,
+      "max": 3.1
+    },
+    "GET /projects": {
+      "p50": 1.5,
+      "p95": 2.1,
+      "p99": 2.8,
+      "max": 2.8
+    },
+    "GET /projects/:id": {
+      "p50": 1.8,
+      "p95": 2.7,
+      "p99": 4.4,
+      "max": 4.4
+    },
+    "GET /projects/:id/phases/2": {
+      "p50": 2.8,
+      "p95": 4.5,
+      "p99": 5.8,
+      "max": 5.8
+    },
+    "POST /projects/:id/answers": {
+      "p50": 3.2,
+      "p95": 5.3,
+      "p99": 6.1,
+      "max": 6.1
+    }
+  },
+  "findings": [
+    {
+      "id": "DB-MIGRATIONS",
+      "category": "data",
+      "ok": true,
+      "summary": "3 applied, 3 on disk — ledger tracked in schema_migrations, so re-running is safe",
+      "detail": {
+        "applied": [
+          "001_init.sql",
+          "002_widen_external_cache_sources.sql",
+          "003_add_overpass_source.sql"
+        ],
+        "onDisk": [
+          "001_init.sql",
+          "002_widen_external_cache_sources.sql",
+          "003_add_overpass_source.sql"
+        ]
+      }
+    },
+    {
+      "id": "DB-CONSTRAINTS",
+      "category": "data",
+      "ok": true,
+      "summary": "constraints: CHECK=44 FOREIGN KEY=4 PRIMARY KEY=7 UNIQUE=5",
+      "detail": [
+        {
+          "table_name": "answers",
+          "constraint_type": "CHECK",
+          "n": "6"
+        },
+        {
+          "table_name": "answers",
+          "constraint_type": "FOREIGN KEY",
+          "n": "1"
+        },
+        {
+          "table_name": "answers",
+          "constraint_type": "PRIMARY KEY",
+          "n": "1"
+        },
+        {
+          "table_name": "answers",
+          "constraint_type": "UNIQUE",
+          "n": "1"
+        },
+        {
+          "table_name": "deliverables",
+          "constraint_type": "CHECK",
+          "n": "9"
+        },
+        {
+          "table_name": "deliverables",
+          "constraint_type": "FOREIGN KEY",
+          "n": "1"
+        },
+        {
+          "table_name": "deliverables",
+          "constraint_type": "PRIMARY KEY",
+          "n": "1"
+        },
+        {
+          "table_name": "deliverables",
+          "constraint_type": "UNIQUE",
+          "n": "1"
+        },
+        {
+          "table_name": "external_cache",
+          "constraint_type": "CHECK",
+          "n": "6"
+        },
+        {
+          "table_name": "external_cache",
+          "constraint_type": "PRIMARY KEY",
+          "n": "1"
+        },
+        {
+          "table_name": "external_cache",
+          "constraint_type": "UNIQUE",
+          "n": "1"
+        },
+        {
+          "table_name": "phases",
+          "constraint_type": "CHECK",
+          "n": "7"
+        },
+        {
+          "table_name": "phases",
+          "constraint_type": "FOREIGN KEY",
+          "n": "1"
+        },
+        {
+          "table_name": "phases",
+          "constraint_type": "PRIMARY KEY",
+          "n": "1"
+        },
+        {
+          "table_name": "phases",
+          "constraint_type": "UNIQUE",
+          "n": "1"
+        },
+        {
+          "table_name": "projects",
+          "constraint_type": "CHECK",
+          "n": "10"
+        },
+        {
+          "table_name": "projects",
+          "constraint_type": "FOREIGN KEY",
+          "n": "1"
+        },
+        {
+          "table_name": "projects",
+          "constraint_type": "PRIMARY KEY",
+          "n": "1"
+        },
+        {
+          "table_name": "schema_migrations",
+          "constraint_type": "CHECK",
+          "n": "2"
+        },
+        {
+          "table_name": "schema_migrations",
+          "constraint_type": "PRIMARY KEY",
+          "n": "1"
+        },
+        {
+          "table_name": "users",
+          "constraint_type": "CHECK",
+          "n": "4"
+        },
+        {
+          "table_name": "users",
+          "constraint_type": "PRIMARY KEY",
+          "n": "1"
+        },
+        {
+          "table_name": "users",
+          "constraint_type": "UNIQUE",
+          "n": "1"
+        }
+      ]
+    },
+    {
+      "id": "DB-GATE-CONSTRAINT",
+      "category": "data",
+      "ok": true,
+      "summary": "approved_needs_timestamp CHECK present — the database refuses an approved phase with no approval time"
+    },
+    {
+      "id": "RACE-DOUBLE-APPROVE",
+      "category": "functional",
+      "ok": true,
+      "summary": "10 simultaneous approvals of phase 1: 10 accepted, 0 refused; final state phase1=approved, current_phase=2 (must be 2, not 11)",
+      "detail": {
+        "statuses": [
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200,
+          200
+        ],
+        "phases": [
+          {
+            "phase_no": 1,
+            "status": "approved",
+            "approved_at": "2026-08-24T21:20:54.292Z"
+          },
+          {
+            "phase_no": 2,
+            "status": "awaiting_approval",
+            "approved_at": null
+          },
+          {
+            "phase_no": 3,
+            "status": "awaiting_approval",
+            "approved_at": null
+          },
+          {
+            "phase_no": 4,
+            "status": "awaiting_approval",
+            "approved_at": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "RACE-APPROVE-VS-REVISE",
+      "category": "functional",
+      "ok": true,
+      "summary": "concurrent revise+approve left phase 1 = approved, approved_at set — impossible state: false",
+      "detail": {
+        "statuses": [
+          200,
+          200
+        ],
+        "after": [
+          {
+            "status": "approved",
+            "approved_at": "2026-08-24T21:20:54.309Z"
+          }
+        ]
+      }
+    },
+    {
+      "id": "RACE-ANSWER-UPSERT",
+      "category": "data",
+      "ok": true,
+      "summary": "8 concurrent writes to one question produced 1 row(s) — UNIQUE(project_id, question_id) holds"
+    },
+    {
+      "id": "DATA-NO-IMPOSSIBLE-STATE",
+      "category": "data",
+      "ok": true,
+      "summary": "0 approved phases with no approval timestamp, across every project in the database"
+    },
+    {
+      "id": "PERF-API-GET-health",
+      "category": "performance",
+      "ok": true,
+      "summary": "GET /health — p50 0.7ms · p95 1.9ms · p99 4ms (n=60)",
+      "detail": {
+        "p50": 0.7,
+        "p95": 1.9,
+        "p99": 4,
+        "max": 4
+      }
+    },
+    {
+      "id": "PERF-API-GET-auth",
+      "category": "performance",
+      "ok": true,
+      "summary": "GET /auth/me — p50 1.4ms · p95 2.8ms · p99 3.1ms (n=60)",
+      "detail": {
+        "p50": 1.4,
+        "p95": 2.8,
+        "p99": 3.1,
+        "max": 3.1
+      }
+    },
+    {
+      "id": "PERF-API-GET-projects",
+      "category": "performance",
+      "ok": true,
+      "summary": "GET /projects — p50 1.5ms · p95 2.1ms · p99 2.8ms (n=60)",
+      "detail": {
+        "p50": 1.5,
+        "p95": 2.1,
+        "p99": 2.8,
+        "max": 2.8
+      }
+    },
+    {
+      "id": "PERF-API-GET-projects",
+      "category": "performance",
+      "ok": true,
+      "summary": "GET /projects/:id — p50 1.8ms · p95 2.7ms · p99 4.4ms (n=60)",
+      "detail": {
+        "p50": 1.8,
+        "p95": 2.7,
+        "p99": 4.4,
+        "max": 4.4
+      }
+    },
+    {
+      "id": "PERF-API-GET-projects-phase",
+      "category": "performance",
+      "ok": true,
+      "summary": "GET /projects/:id/phases/2 — p50 2.8ms · p95 4.5ms · p99 5.8ms (n=60)",
+      "detail": {
+        "p50": 2.8,
+        "p95": 4.5,
+        "p99": 5.8,
+        "max": 5.8
+      }
+    },
+    {
+      "id": "PERF-API-POST-projects-answers",
+      "category": "performance",
+      "ok": true,
+      "summary": "POST /projects/:id/answers — p50 3.2ms · p95 5.3ms · p99 6.1ms (n=60)",
+      "detail": {
+        "p50": 3.2,
+        "p95": 5.3,
+        "p99": 6.1,
+        "max": 6.1
+      }
+    },
+    {
+      "id": "RES-DB-DOWN",
+      "category": "resilience",
+      "ok": true,
+      "summary": "with the database refusing connections: 500, body {\"error\":\"Internal error\"} — no driver internals leaked"
+    },
+    {
+      "id": "RES-HEALTH-LIES",
+      "category": "resilience",
+      "ok": true,
+      "summary": "/health answered 200 while the database was down — it is a liveness probe, not a readiness probe",
+      "detail": {
+        "note": "documented behaviour, but a readiness endpoint that checks the database would be more useful to an operator"
+      }
+    },
+    {
+      "id": "RES-DB-RECOVERY",
+      "category": "resilience",
+      "ok": true,
+      "summary": "first request after the database returned: 200 — pool recovered without a restart"
+    },
+    {
+      "id": "RES-LARGE-BODY",
+      "category": "resilience",
+      "ok": true,
+      "summary": "2 MB request body answered 413 — express.json default limit is 100 kB"
+    }
+  ]
+}

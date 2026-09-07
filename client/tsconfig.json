@@ -1,0 +1,46 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noUncheckedIndexedAccess": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "allowImportingTsExtensions": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
+    /*
+      Browser code only. Without this, TypeScript ambiently loads every
+      @types/* package npm hoists into the workspace root — which, because
+      the server workspace depends on them, means @types/node, express, pg
+      and jsonwebtoken. That made `process.env`, `Buffer` and Express types
+      type-check inside client components and fail at runtime in the browser.
+     */
+    "types": [
+      "vite/client"
+    ]
+  },
+  /*
+    src only. tests/ and playwright.config.ts import node:path and node:url,
+    and a single node: import re-injects the whole @types/node global scope
+    into this program — restricting "types" above is not enough on its own.
+    Those files are type-checked by tsconfig.node.json instead.
+   */
+  "include": [
+    "src"
+  ]
+}

@@ -1,0 +1,245 @@
+{
+  "$schema": "./_schema.json",
+  "verticalId": "gaming_general",
+  "displayName": "Gaming (broad)",
+  "sector": "Gaming",
+  "typicalBusinessModels": [
+    "iap",
+    "ad_supported",
+    "hybrid"
+  ],
+  "lastReviewed": "2026-08-10",
+  "coverage": {
+    "metricsTotal": 14,
+    "metricsSourced": 8,
+    "metricsPlaceholder": 6,
+    "metricsProxy": 0,
+    "metricsWithConflicts": 0
+  },
+  "metrics": {
+    "arpu_12mo_blended_usd": {
+      "value": 4.21,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "USD",
+      "confidence": "secondary",
+      "source": {
+        "publisher": "Liftoff 2026 index",
+        "via": "digitalapplied.com",
+        "url": "https://www.digitalapplied.com/blog/mobile-app-marketing-statistics-2026-install-data",
+        "tier": "secondary",
+        "retrieved": "2026-08-10"
+      },
+      "note": null,
+      "conflicts": null
+    },
+    "retention_d1_pct": {
+      "value": 45.0,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "tertiary",
+      "source": {
+        "publisher": "vmobify (compiled from AppsFlyer, Adjust, UXCam)",
+        "via": "vmobify.com",
+        "url": "https://vmobify.com/blog/app-retention-benchmarks",
+        "tier": "tertiary",
+        "retrieved": "2026-08-10"
+      },
+      "note": "Mid-core reference.",
+      "conflicts": null
+    },
+    "retention_d7_pct": {
+      "value": 22.0,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "tertiary",
+      "source": {
+        "publisher": "vmobify (compiled from AppsFlyer, Adjust, UXCam)",
+        "via": "vmobify.com",
+        "url": "https://vmobify.com/blog/app-retention-benchmarks",
+        "tier": "tertiary",
+        "retrieved": "2026-08-10"
+      },
+      "note": "Mid-core reference.",
+      "conflicts": null
+    },
+    "retention_d30_pct": {
+      "value": 6.0,
+      "rangeLow": 4.0,
+      "rangeHigh": 8.0,
+      "unit": "percent",
+      "confidence": "secondary",
+      "source": {
+        "publisher": "UXCam (compiled from AppsFlyer State of App Marketing 2025 + 37k app panel)",
+        "via": "uxcam.com",
+        "url": "https://uxcam.com/blog/mobile-app-retention-benchmarks/",
+        "tier": "secondary",
+        "retrieved": "2026-08-10"
+      },
+      "note": null,
+      "conflicts": null
+    },
+    "retention_d365_pct": {
+      "value": 4.5,
+      "rangeLow": 4.0,
+      "rangeHigh": 5.0,
+      "unit": "percent",
+      "confidence": "secondary",
+      "source": {
+        "publisher": "Sensor Tower - State of Mobile 2026",
+        "via": "core-mba.pro",
+        "url": "https://www.core-mba.pro/tool-hub/mobile-app-retention",
+        "tier": "secondary",
+        "retrieved": "2026-08-10"
+      },
+      "note": "Top-25 midcore titles only.",
+      "conflicts": null
+    },
+    "cpi_usd": {
+      "value": 0.56,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "USD",
+      "confidence": "secondary",
+      "source": {
+        "publisher": "The Social Outline (citing Searchlab, Adjust, AppsFlyer, Liftoff 2026)",
+        "via": "thesocialoutline.com",
+        "url": "https://thesocialoutline.com/blog/mobile-app-cpi-benchmarks-2026",
+        "tier": "secondary",
+        "retrieved": "2026-08-10"
+      },
+      "note": "Blended global gaming; reported +30% YoY in 2026.",
+      "conflicts": null
+    },
+    "cpi_ios_usd": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "USD",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "cpi_android_usd": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "USD",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "trial_to_paid_pct": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "ltv_usd": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "USD",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "churn_monthly_pct": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "store_conversion_pct": {
+      "value": null,
+      "rangeLow": null,
+      "rangeHigh": null,
+      "unit": "percent",
+      "confidence": "placeholder",
+      "source": {
+        "publisher": null,
+        "via": null,
+        "url": null,
+        "tier": "placeholder",
+        "retrieved": null
+      },
+      "note": "NOT SOURCED. App renders 'unvalidated'.",
+      "conflicts": null
+    },
+    "cpi_ios_midcore_usd": {
+      "value": 6.25,
+      "rangeLow": 4.5,
+      "rangeHigh": 8.0,
+      "unit": "USD",
+      "confidence": "tertiary",
+      "source": {
+        "publisher": "Insert Affiliate (citing Business of Apps, Statista, Mapendo, MAF)",
+        "via": "insertaffiliate.com",
+        "url": "https://insertaffiliate.com/blog/mobile-app-user-acquisition-cost-benchmarks/",
+        "tier": "tertiary",
+        "retrieved": "2026-08-10"
+      },
+      "note": null,
+      "conflicts": null
+    },
+    "cpi_ios_hardcore_usd": {
+      "value": 11.5,
+      "rangeLow": 8.0,
+      "rangeHigh": 15.0,
+      "unit": "USD",
+      "confidence": "tertiary",
+      "source": {
+        "publisher": "Insert Affiliate (citing Business of Apps, Statista, Mapendo, MAF)",
+        "via": "insertaffiliate.com",
+        "url": "https://insertaffiliate.com/blog/mobile-app-user-acquisition-cost-benchmarks/",
+        "tier": "tertiary",
+        "retrieved": "2026-08-10"
+      },
+      "note": null,
+      "conflicts": null
+    }
+  }
+}

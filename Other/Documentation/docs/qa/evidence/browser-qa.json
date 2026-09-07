@@ -1,0 +1,217 @@
+{
+  "generatedAt": "2026-08-22T19:22:52.202Z",
+  "axeVersion": "4.13.0",
+  "findings": [
+    {
+      "id": "A11Y-LOGIN",
+      "category": "accessibility",
+      "page": "login",
+      "ok": true,
+      "summary": "login: no WCAG 2.2 AA violations (14 checks passed)",
+      "detail": []
+    },
+    {
+      "id": "A11Y-KEYBOARD",
+      "category": "accessibility",
+      "page": "login",
+      "ok": true,
+      "summary": "first Tab reaches INPUT#email; focus ring computed: true"
+    },
+    {
+      "id": "SEC-XSS-PROJECT-NAME",
+      "category": "security",
+      "page": "projects",
+      "ok": true,
+      "summary": "payload stored and rendered as inert text (React escaping); executed: false",
+      "detail": {
+        "payload": "<img src=x onerror=\"window.__xss=1\">",
+        "executed": false,
+        "renderedAsText": true
+      }
+    },
+    {
+      "id": "SEC-XSS-ANSWER",
+      "category": "security",
+      "page": "phase 1",
+      "ok": true,
+      "summary": "answer payload round-trips as inert text"
+    },
+    {
+      "id": "A11Y-PROJECTS",
+      "category": "accessibility",
+      "page": "projects",
+      "ok": true,
+      "summary": "projects: no WCAG 2.2 AA violations (27 checks passed)",
+      "detail": []
+    },
+    {
+      "id": "A11Y-PHASE",
+      "category": "accessibility",
+      "page": "phase (form + gate)",
+      "ok": true,
+      "summary": "phase (form + gate): no WCAG 2.2 AA violations (27 checks passed)",
+      "detail": []
+    },
+    {
+      "id": "A11Y-DOCUMENTS",
+      "category": "accessibility",
+      "page": "documents",
+      "ok": true,
+      "summary": "documents: no WCAG 2.2 AA violations (11 checks passed)",
+      "detail": []
+    },
+    {
+      "id": "A11Y-LABELS",
+      "category": "accessibility",
+      "page": "phase 1",
+      "ok": true,
+      "summary": "every form control has an accessible name",
+      "detail": []
+    },
+    {
+      "id": "A11Y-HEADINGS",
+      "category": "accessibility",
+      "page": "phase 1",
+      "ok": true,
+      "summary": "2 headings; h1 present: true; level skips: none",
+      "detail": [
+        {
+          "level": 1,
+          "text": "<img src=x onerror=\"window.__xss=1\">"
+        },
+        {
+          "level": 2,
+          "text": "Phase 1 — Idea & Strategic Goal"
+        }
+      ]
+    },
+    {
+      "id": "A11Y-LANDMARKS",
+      "category": "accessibility",
+      "page": "phase 1",
+      "ok": true,
+      "summary": "main=1 nav=1 header=1",
+      "detail": {
+        "main": 1,
+        "nav": 1,
+        "header": 1
+      }
+    },
+    {
+      "id": "A11Y-STATUS-MESSAGES",
+      "category": "accessibility",
+      "page": "phase 1",
+      "ok": true,
+      "summary": "6 live region(s) — the gate's refusal reason and autosave state are announced only if one exists"
+    },
+    {
+      "id": "UX-OVERFLOW-375",
+      "category": "ux",
+      "page": "phase 1 @ mobile 375",
+      "ok": true,
+      "summary": "no horizontal scroll",
+      "detail": {
+        "horizontal": false,
+        "scrollW": 375,
+        "clientW": 375
+      }
+    },
+    {
+      "id": "UX-OVERFLOW-768",
+      "category": "ux",
+      "page": "phase 1 @ tablet 768",
+      "ok": true,
+      "summary": "no horizontal scroll",
+      "detail": {
+        "horizontal": false,
+        "scrollW": 768,
+        "clientW": 768
+      }
+    },
+    {
+      "id": "UX-OVERFLOW-1280",
+      "category": "ux",
+      "page": "phase 1 @ desktop 1280",
+      "ok": true,
+      "summary": "no horizontal scroll",
+      "detail": {
+        "horizontal": false,
+        "scrollW": 1280,
+        "clientW": 1280
+      }
+    },
+    {
+      "id": "A11Y-REFLOW-320",
+      "category": "accessibility",
+      "page": "phase 1 @ 320px (≈400% zoom)",
+      "ok": true,
+      "summary": "reflows without horizontal scrolling"
+    },
+    {
+      "id": "A11Y-REDUCED-MOTION",
+      "category": "accessibility",
+      "page": "global stylesheet",
+      "ok": true,
+      "summary": "a prefers-reduced-motion rule exists"
+    },
+    {
+      "id": "PERF-LOGIN",
+      "category": "performance",
+      "page": "login",
+      "ok": true,
+      "summary": "LCP 128ms (≤2500) · CLS 0.000 (≤0.1) · TTFB 7ms · load 95ms",
+      "detail": {
+        "lcp": 128,
+        "cls": 0,
+        "ttfb": 6.699999988079071,
+        "domContentLoaded": 94.90000003576279,
+        "load": 95.40000003576279
+      }
+    },
+    {
+      "id": "PERF-PROJECTS",
+      "category": "performance",
+      "page": "projects",
+      "ok": true,
+      "summary": "LCP 140ms (≤2500) · CLS 0.046 (≤0.1) · TTFB 7ms · load 92ms",
+      "detail": {
+        "lcp": 140,
+        "cls": 0.0461199951171875,
+        "ttfb": 6.600000023841858,
+        "domContentLoaded": 91.39999997615814,
+        "load": 92
+      }
+    },
+    {
+      "id": "PERF-PHASE",
+      "category": "performance",
+      "page": "phase",
+      "ok": true,
+      "summary": "LCP 156ms (≤2500) · CLS 0.000 (≤0.1) · TTFB 6ms · load 92ms",
+      "detail": {
+        "lcp": 156,
+        "cls": 0,
+        "ttfb": 5.5,
+        "domContentLoaded": 91.79999995231628,
+        "load": 92.29999995231628
+      }
+    },
+    {
+      "id": "PERF-ASSETS",
+      "category": "performance",
+      "page": "login (dev server)",
+      "ok": true,
+      "summary": "27 JS/CSS requests on first load (Vite dev server serves unbundled modules; production build is 79 kB gzipped)"
+    },
+    {
+      "id": "UX-CONSOLE",
+      "category": "ux",
+      "page": "all visited",
+      "ok": true,
+      "summary": "2 console error(s): Failed to load resource: the server responded with a status of 401 (Unauthorized)",
+      "detail": [
+        "Failed to load resource: the server responded with a status of 401 (Unauthorized)"
+      ]
+    }
+  ]
+}

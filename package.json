@@ -1,0 +1,36 @@
+{
+  "name": "biz2code",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A Linear Gatekeeper for business-validated development",
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "dev": "concurrently -n api,web -c blue,green \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "npm run dev --workspace server",
+    "dev:web": "npm run dev --workspace client",
+    "build": "npm run build --workspace server && npm run build --workspace client",
+    "test": "npm run test --workspace server",
+    "db:init": "npm run migrate --workspace server",
+    "db:seed": "npm run seed --workspace server",
+    "validate:data": "python3 data/benchmarks/validate_benchmarks.py",
+    "typecheck": "npm run typecheck --workspace server && npm run typecheck --workspace client",
+    "test:ui": "npm run test:ui --workspace client",
+    "test:ui:install": "npm run test:ui:install --workspace client",
+    "rehearse": "npm run rehearse --workspace server",
+    "qa:api": "npm run qa:api --workspace server",
+    "qa:resilience": "npm run qa:resilience --workspace server",
+    "qa:generation": "npm run qa:generation --workspace server",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "probe:sources": "npm run probe:sources --workspace server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

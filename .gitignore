@@ -1,0 +1,18 @@
+node_modules/
+dist/
+build/
+.env
+.env.local
+outputs/
+*.log
+.DS_Store
+coverage/
+*.tsbuildinfo
+
+# Playwright test artefacts. Unanchored: running `playwright test` from the repo
+# root rather than from client/ drops a test-results/ here instead.
+# The browser binary lives in a machine-wide cache, not in the repo — see
+# README "Testing".
+test-results/
+playwright-report/
+blob-report/

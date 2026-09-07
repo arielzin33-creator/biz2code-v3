@@ -1,0 +1,73 @@
+# Static, unit and API verification on every push and pull request.
+#
+# Deliberately excludes anything that spends LLM quota or needs a browser
+# binary: qa:generation and test:ui are pre-release steps, run locally. What
+# remains takes well under a minute and needs only Postgres.
+name: verify
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:18
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: biz2code
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports: [5432:5432]
+
+    env:
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/biz2code
+      # Test-only values. The real keys are never needed by these steps:
+      # nothing here calls a model.
+      JWT_SECRET: ci-only-not-a-real-secret
+      GROQ_API_KEY: ci-only-not-a-real-key
+      # Three llm.service fallback tests assert the Gemini rung of the ladder
+      # and fail if this is unset. Never used to reach a model: see above.
+      GEMINI_API_KEY: ci-only-not-a-real-key
+      CLIENT_ORIGIN: http://localhost:5173
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Type-check (server and client)
+        run: npm run typecheck
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Benchmark honesty contract
+        run: python3 data/benchmarks/validate_benchmarks.py
+
+      - name: Build the client
+        run: npm run build
+
+      - name: Apply migrations
+        run: npm run db:init
+
+      - name: API, ownership and security probe
+        run: npm run qa:api
+
+      - name: Concurrency, resilience and latency probe
+        run: npm run qa:resilience
