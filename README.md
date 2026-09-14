@@ -5,6 +5,38 @@ Business Plan as DOCX files. Runs entirely on your own machine.
 
 React + TypeScript (Vite) · Node + Express · PostgreSQL · Groq
 
+## Why I built it
+
+Jumping straight from "idea" to "code" is exactly how AI-assisted tools produce confident,
+wrong output — there's no spec to hold the generation accountable to. biz2code forces the
+opposite order: an idea has to clear a Market Requirements Document, then a Product
+Requirements Document, then a Business Plan, with a human approving each phase before the
+next one starts.
+
+## What I did
+
+Solo build, end to end — architecture, phase-gate logic, and the full stack
+(Node.js/Express/TypeScript, PostgreSQL, React, JWT auth). I defined the trust boundary
+separating deterministic computation from LLM narration: a market-sizing (TAM/SAM/SOM)
+module and a 12-formula revenue model compute before any figure reaches the AI layer, with
+confidence-tier propagation preventing invented numbers from reaching a document. A
+database-enforced citation guardrail limits the system to an allow-list of external data
+sources, with explicit labeling of unvalidated or conflicting data rather than silent gaps.
+
+## The challenge
+
+Designing the phase-gate logic itself — each stage needed explicit human approval before
+the next could generate, which meant the state machine had to be strict about what
+"approved" means and prevent a rejected phase from silently leaking into later documents.
+
+## Result
+
+Shipped as my bootcamp capstone: a working pipeline that takes a raw idea through four
+human-approved phases and out the other side as a generated MRD, PRD and Business Plan,
+backed by an internal test suite and documented architecture decisions (ADRs).
+
+---
+
 ## Requirements
 
 - Node.js 20 or newer
